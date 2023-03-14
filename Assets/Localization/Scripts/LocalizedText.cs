@@ -11,6 +11,7 @@ namespace Assets.SimpleLocalization
     public class LocalizedText : MonoBehaviour
     {
         public string LocalizationKey;
+        public bool isCapital = true;
 
         public void Awake()
         {
@@ -25,7 +26,14 @@ namespace Assets.SimpleLocalization
 
         private void Localize()
         {
-            GetComponent<TextMeshProUGUI>().text= LocalizationManager.Localize(LocalizationKey).ToUpper();
+            if (isCapital)
+            {
+                GetComponent<TextMeshProUGUI>().text= LocalizationManager.Localize(LocalizationKey).ToUpper();
+            }
+            else
+            {
+                GetComponent<TextMeshProUGUI>().text = LocalizationManager.Localize(LocalizationKey);
+            }
         }
     }
 }

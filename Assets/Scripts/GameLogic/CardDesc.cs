@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class CardDesc : MonoBehaviour
@@ -26,6 +27,9 @@ public class CardDesc : MonoBehaviour
     public VideoClip softClip;
     public VideoPlayer videoPlayer;
     public GameObject texture;
+    private CardController cardController;
+    public GameObject infoPanel;
+    private bool isSoft;
 
     private void Start()
     {
@@ -47,6 +51,8 @@ public class CardDesc : MonoBehaviour
             videoPlayer.SetDirectAudioMute(0, true);
         }
         DisableTexture();
+        cardController = FindObjectOfType<CardController>();
+        infoPanel.SetActive(false);
     }
 
     public String CardName()
@@ -61,6 +67,7 @@ public class CardDesc : MonoBehaviour
 
     public void SetSoftSide()
     {
+        isSoft = true;
         hardSideText.SetActive(false);
         hardSideDiamond.SetActive(false);
         softSideText.SetActive(true);
@@ -69,6 +76,7 @@ public class CardDesc : MonoBehaviour
 
     public void SetHardSide()
     {
+        isSoft = false;
         softSideText.SetActive(false);
         softSideDiamond.SetActive(false);
         hardSideText.SetActive(true);
@@ -83,5 +91,21 @@ public class CardDesc : MonoBehaviour
     public void EnableTexture()
     {
         texture.SetActive(true);
+    }
+
+    public void ShowTextDesc()
+    {
+        cardController.ShowInfoText(gameObject);
+        infoPanel.SetActive(true);
+        if (!isSoft)
+        {
+            infoPanel.transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+    public void CloseTextDesc()
+    {
+        cardController.CloseInfoText();
+        infoPanel.SetActive(false);
     }
 }

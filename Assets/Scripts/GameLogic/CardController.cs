@@ -42,7 +42,9 @@ public class CardController : MonoBehaviour
 
     public RenderTexture texture;
 
-    private bool interactive;
+    private Camera mainCamera;
+
+    public bool interactive;
     private bool isPlayingVideo;
 
     private void Awake()
@@ -61,8 +63,10 @@ public class CardController : MonoBehaviour
         texture.Release();
         
         isPlayingVideo = false;
-        interactive = true;
+        interactive = false;
         titlePickSide.SetActive(true);
+        
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -81,6 +85,7 @@ public class CardController : MonoBehaviour
     {
         if (interactive)
         {
+            AudioManager.Instance.PlayButtonClick();
             spawnCard1Location.GetComponent<Animator>().SetTrigger("SwipeInTrigger");
             spawnCard2Location.GetComponent<Animator>().SetTrigger("SwipeInTrigger");
             if (card.GetComponent<CardType>().GetCardType() == CardTypeEnum.SOFT)
@@ -100,6 +105,8 @@ public class CardController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.4f);
         titlePickSide.SetActive(false);
+        spawnCard1Location.GetComponent<Button>().interactable = false;
+        spawnCard2Location.GetComponent<Button>().interactable = false;
         GetComponent<GameTypeController>().EnableText();
         interactive = true;
         spawnCard1Location.SetActive(true);
@@ -124,8 +131,9 @@ public class CardController : MonoBehaviour
     {
         if (interactive)
         {
+            AudioManager.Instance.PlayButtonClick();
             CardDesc cardDesc = card.GetComponent<CardDesc>();
-            cardDesc.videoPlayer.targetCamera = Camera.main;
+            cardDesc.videoPlayer.targetCamera = mainCamera;
         
             if (side == CardTypeEnum.HARD)
             {
@@ -153,7 +161,6 @@ public class CardController : MonoBehaviour
             StartCoroutine(WaitBeforePlayingVideo(cardDesc, card));
             interactive = false;
         }
-        
     } 
 
     IEnumerator WaitBeforePlayingVideo(CardDesc cardDesc, GameObject card)
@@ -169,11 +176,15 @@ public class CardController : MonoBehaviour
     {
         interactive = true;
         isPlayingVideo = false;
+        
         spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", false);
         spawnCard2Location.GetComponent<Animator>().SetBool("SetToLarge", false);
+        
         yield return new WaitForSeconds(0.6f);
+        
         spawnCard1Location.SetActive(true);
         spawnCard2Location.SetActive(true);
+        
         texture.Release();
         
         if (!card.GetComponent<CardDesc>().isLast)
@@ -269,11 +280,13 @@ public class CardController : MonoBehaviour
         if (side == CardTypeEnum.SOFT)
         {
             spawnCard2Location.SetActive(true);
+            spawnCard2Location.GetComponent<Button>().interactable = true;
         }
 
         if (side == CardTypeEnum.HARD)
         {
             spawnCard1Location.SetActive(true);
+            spawnCard1Location.GetComponent<Button>().interactable = true;
         }
     }
     
@@ -284,26 +297,13 @@ public class CardController : MonoBehaviour
         Destroy(currentCard2);
         spawnCard1Location.SetActive(true);
         spawnCard2Location.SetActive(true);
+        spawnCard1Location.GetComponent<Button>().interactable = false;
+        spawnCard2Location.GetComponent<Button>().interactable = false;
         card1Names.Clear();
         card2Names.Clear();
         resultSideOne = String.Empty;
         resultSideTwo = String.Empty;
         side = CardTypeEnum.NONE;
-    }
-
-    private void CheckBackground() //Based on the current side, check the sprite of the current cards to either soft/hard
-    {
-        if (side == CardTypeEnum.SOFT)
-        {
-            currentCard1.GetComponent<Image>().sprite = softSideBackground;
-            currentCard2.GetComponent<Image>().sprite = softSideBackground;
-        }
-
-        if (side == CardTypeEnum.HARD)
-        {
-            currentCard1.GetComponent<Image>().sprite = hardSideBackground;
-            currentCard2.GetComponent<Image>().sprite = hardSideBackground;
-        }
     }
 
     private void CheckBackground(GameObject card) //Based on the current side, check the sprite of a specific card
@@ -338,6 +338,7 @@ public class CardController : MonoBehaviour
 
     public void GoBack()
     {
+        AudioManager.Instance.PlayButtonClick();
         spawnCard1Location.GetComponent<Animator>().SetTrigger("SwipeInTrigger");
         spawnCard2Location.GetComponent<Animator>().SetTrigger("SwipeInTrigger");
         StartCoroutine(RollBack());
@@ -402,5 +403,35 @@ public class CardController : MonoBehaviour
             // Destroy(currentCard1);
             // Destroy(currentCard2);
         // }
+    }
+
+    public void ShowInfoText(GameObject card)
+    {
+        if (interactive)
+        {
+            interactive = false;
+            if (ReferenceEquals(card, currentCard1))
+            {
+                spawnCard2Location.SetActive(false);
+                spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", true);
+            }
+            else if (ReferenceEquals(card, currentCard2))
+            {
+                spawnCard1Location.SetActive(false);
+                spawnCard2Location.GetComponent<Animator>().SetBool("SetToLarge", true);
+            }
+        }
+    }
+
+    public void CloseInfoText()
+    {
+        if (!isPlayingVideo)
+        {
+            interactive = true;
+            spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", false);
+            spawnCard2Location.GetComponent<Animator>().SetBool("SetToLarge", false);
+            spawnCard1Location.SetActive(true);
+            spawnCard2Location.SetActive(true);
+        }
     }
 }

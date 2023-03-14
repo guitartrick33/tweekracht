@@ -1,7 +1,10 @@
 Key,English,Dutch
 Start.Energy,Energy game,Energy Game
-Start.Today,About today,Over vandaag
-Start.Duo,About friends,Over vrienden
+Start.EnergyDesc,"With this game, you'll discover not quite what you do, but what gives you the most energy, and much more!","Met dit spel ontdek je niet per se wat je doet, maar wat jou de meeste energie geeft, en nog veel meer!"
+Start.Today,Daily game,Over vandaag
+Start.TodayDesc,"With this game, you will discover what you do mainly today. How do you behave and does that make you happy?",Met dit spel ontdek je wat je vandaag vooral doet. Hoe gedraag jij je en wordt je daar blij van?
+Start.Duo,Friend mode ,Vrienden spel
+Start.DuoDesc,Discover how you see your friends with this game! Do you recognise them? And they themselves too? Let's find out!,Ontdek hoe jij je vrienden ziet met dit spel! Herken je ze? En zij zichzelf ook? Laten we het onderzoeken!
 Start.ETitle,What gives you energy?,Wat geeft je energie?
 Start.TTitle,What do I feel like today?,Hoe voel je je vandaag?
 Start.DTitle,How do I see,Hoe zie ik
@@ -12,3 +15,4 @@ Start.Vid2Break,Do you have something very nice in mind? Do you feel your energy
 Start.Vid3Break,Do you feel the difference between your hard and soft side? Take a bit of time and feel it.,Voel je het verschil tussen jouw harde en zachte kant? Neem even de tijd en voel het.
 Start.Vid4Break,I would like to start playing now!,Ik heb zin om met het spel te beginnen!
 Start.SideTitle,What is the side you like to start with?,Met welke kant wil je beginnen?
+Start.VidBreakButton,Yes!!,Yes!!
