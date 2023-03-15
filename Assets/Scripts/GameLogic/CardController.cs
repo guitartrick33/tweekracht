@@ -46,6 +46,7 @@ public class CardController : MonoBehaviour
 
     public bool interactive;
     private bool isPlayingVideo;
+    private bool isInfoPanelOpen;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class CardController : MonoBehaviour
         texture.Release();
         
         isPlayingVideo = false;
+        isInfoPanelOpen = false;
         interactive = false;
         titlePickSide.SetActive(true);
         
@@ -71,7 +73,7 @@ public class CardController : MonoBehaviour
 
     private void Update()
     {
-        if (card1Names.Count > 0 && card2Names.Count > 0 && !resultPanel.activeSelf && !isPlayingVideo)
+        if (card1Names.Count > 0 && card2Names.Count > 0 && !resultPanel.activeSelf && !isPlayingVideo && !isInfoPanelOpen)
         {
             backButton.SetActive(true);
         }
@@ -408,6 +410,7 @@ public class CardController : MonoBehaviour
         if (interactive)
         {
             interactive = false;
+            isInfoPanelOpen = true;
             if (ReferenceEquals(card, currentCard1))
             {
                 spawnCard2Location.SetActive(false);
@@ -426,6 +429,7 @@ public class CardController : MonoBehaviour
         if (!isPlayingVideo)
         {
             interactive = true;
+            isInfoPanelOpen = false;
             spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", false);
             spawnCard2Location.GetComponent<Animator>().SetBool("SetToLarge", false);
             spawnCard1Location.SetActive(true);
