@@ -108,7 +108,6 @@ public class CardController : MonoBehaviour
         spawnCard1Location.GetComponent<Button>().interactable = false;
         spawnCard2Location.GetComponent<Button>().interactable = false;
         GetComponent<GameTypeController>().EnableText();
-        interactive = true;
         spawnCard1Location.SetActive(true);
         spawnCard2Location.SetActive(true);
         
@@ -174,7 +173,6 @@ public class CardController : MonoBehaviour
 
     IEnumerator RefreshCards(GameObject card) //Refreshes the cards after the video from PickCard is done
     {
-        interactive = true;
         isPlayingVideo = false;
         
         spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", false);

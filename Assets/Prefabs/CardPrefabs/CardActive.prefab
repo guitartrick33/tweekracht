@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LocalizationKey: CardDescription.Active
-  isCapital: 1
+  isCapital: 0
 --- !u!1 &6586433178166203410
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class IntroductionVideoController : MonoBehaviour
     ViewManager viewManager;
     [SerializeField] private ViewType viewTypeAfterIntro;
     public Transform texts;
+    public Transform titles;
 
     private void Awake()
     {
@@ -42,6 +43,10 @@ public class IntroductionVideoController : MonoBehaviour
         }
         StartVideo();
         foreach (Transform t in texts)
+        {
+            t.gameObject.SetActive(false);
+        }
+        foreach (Transform t in titles)
         {
             t.gameObject.SetActive(false);
         }
@@ -84,6 +89,10 @@ public class IntroductionVideoController : MonoBehaviour
             {
                 t.gameObject.SetActive(false);
             }
+            foreach (Transform t in titles)
+            {
+                t.gameObject.SetActive(false);
+            }
         }
         
         StartVideo();
@@ -93,5 +102,6 @@ public class IntroductionVideoController : MonoBehaviour
     {
         backgroundPanel.SetActive(true);
         texts.GetChild(videoClipIndex).gameObject.SetActive(true);
+        titles.GetChild(videoClipIndex).gameObject.SetActive(true);
     }
 }
