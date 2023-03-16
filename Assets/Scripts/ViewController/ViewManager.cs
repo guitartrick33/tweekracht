@@ -31,7 +31,7 @@ public class ViewManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -58,6 +58,4 @@ public class ViewManager : MonoBehaviour
         }
         else { Debug.LogWarning("The desired view was not found!"); }
     }
-    
-   
 }

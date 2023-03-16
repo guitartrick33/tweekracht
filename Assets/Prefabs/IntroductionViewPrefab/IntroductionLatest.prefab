@@ -474,7 +474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2959687968315462446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -976,6 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c247f87012bd88b4ca0c5f81aa9b823d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoClips: []
+  videoClipIndex: 0
   nlClips:
   - {fileID: 32900000, guid: d56f89542913c5840b5020fdf8b4330a, type: 3}
   - {fileID: 32900000, guid: d40d82a7981873c479d5a1df08c15cee, type: 3}
@@ -990,6 +992,8 @@ MonoBehaviour:
   viewTypeAfterIntro: 2
   texts: {fileID: 2732951373594093189}
   titles: {fileID: 8014824604901698397}
+  loadingScreen: {fileID: 0}
+  loadingBarFill: {fileID: 0}
 --- !u!1 &4189279796168261658
 GameObject:
   m_ObjectHideFlags: 0

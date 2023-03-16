@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class CardController : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class CardController : MonoBehaviour
     public List<GameObject> cards;
     public List<String> card1Names;
     public List<String> card2Names;
-
     public GameObject spawnCard1;
     public GameObject spawnCard2;
 
@@ -47,6 +47,7 @@ public class CardController : MonoBehaviour
     public bool interactive;
     private bool isPlayingVideo;
     private bool isInfoPanelOpen;
+    public VideoPlayer vp;
 
     private void Awake()
     {
@@ -66,9 +67,16 @@ public class CardController : MonoBehaviour
         isPlayingVideo = false;
         isInfoPanelOpen = false;
         interactive = false;
-        titlePickSide.SetActive(true);
         
         mainCamera = Camera.main;
+        vp = null;
+        ResetSidesCompletely();
+    }
+
+    private void OnEnable() //Method used to reset titles when going back from the game to the main menu and then back to the game
+    {
+        titlePickSide.SetActive(true);
+        GetComponent<GameTypeController>().DisableTexts();
     }
 
     private void Update()
@@ -107,9 +115,9 @@ public class CardController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.4f);
         titlePickSide.SetActive(false);
-        spawnCard1Location.GetComponent<Button>().interactable = false;
-        spawnCard2Location.GetComponent<Button>().interactable = false;
+        
         GetComponent<GameTypeController>().EnableText();
+        
         spawnCard1Location.SetActive(true);
         spawnCard2Location.SetActive(true);
         
@@ -136,19 +144,17 @@ public class CardController : MonoBehaviour
             CardDesc cardDesc = card.GetComponent<CardDesc>();
             cardDesc.videoPlayer.targetCamera = mainCamera;
             cardDesc.SetVideoClip();
-        
+            isPlayingVideo = true;
 
             if (ReferenceEquals(card, currentCard1))
             {
                 spawnCard2Location.SetActive(false);
                 spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", true);
-                isPlayingVideo = true;
             }
             else if (ReferenceEquals(card, currentCard2))
             {
                 spawnCard1Location.SetActive(false);
                 spawnCard2Location.GetComponent<Animator>().SetBool("SetToLarge", true);
-                isPlayingVideo = true;
             }
 
             StartCoroutine(WaitBeforePlayingVideo(cardDesc, card));
@@ -160,6 +166,7 @@ public class CardController : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         cardDesc.videoPlayer.Play();
+        vp = cardDesc.videoPlayer;
         yield return new WaitForSeconds(0.5f); //Added this because on the APK emulator, the textures didn't load as intended so that refrains from showing them as empty
         cardDesc.EnableTexture();
         cardDesc.videoPlayer.loopPointReached += (vp) => StartCoroutine(RefreshCards(card));
@@ -272,13 +279,13 @@ public class CardController : MonoBehaviour
         if (side == CardTypeEnum.SOFT)
         {
             spawnCard2Location.SetActive(true);
-            spawnCard2Location.GetComponent<Button>().interactable = true;
+            // spawnCard2Location.GetComponent<Button>().interactable = true;
         }
 
         if (side == CardTypeEnum.HARD)
         {
             spawnCard1Location.SetActive(true);
-            spawnCard1Location.GetComponent<Button>().interactable = true;
+            // spawnCard1Location.GetComponent<Button>().interactable = true;
         }
     }
     
@@ -289,13 +296,16 @@ public class CardController : MonoBehaviour
         Destroy(currentCard2);
         spawnCard1Location.SetActive(true);
         spawnCard2Location.SetActive(true);
-        spawnCard1Location.GetComponent<Button>().interactable = false;
-        spawnCard2Location.GetComponent<Button>().interactable = false;
+        // spawnCard1Location.GetComponent<Button>().interactable = false;
+        // spawnCard2Location.GetComponent<Button>().interactable = false;
         card1Names.Clear();
         card2Names.Clear();
         resultSideOne = String.Empty;
         resultSideTwo = String.Empty;
         side = CardTypeEnum.NONE;
+        isPlayingVideo = false;
+        isInfoPanelOpen = false;
+        interactive = false;
     }
 
     private void CheckBackground(GameObject card) //Based on the current side, check the sprite of a specific card
@@ -330,17 +340,17 @@ public class CardController : MonoBehaviour
 
     public void GoBack()
     {
+        interactive = false;
         AudioManager.Instance.PlayButtonClick();
         spawnCard1Location.GetComponent<Animator>().SetTrigger("SwipeInTrigger");
         spawnCard2Location.GetComponent<Animator>().SetTrigger("SwipeInTrigger");
         StartCoroutine(RollBack());
-        interactive = false;
     }
     
     IEnumerator RollBack() //Rollback - pressing a button will enable you to go back to the previous choice - does not work for sides!
     {
         yield return new WaitForSeconds(1.2f);
-        interactive = true;
+        // interactive = true;
         if (card1Names.Count >= 1 && card2Names.Count >= 1)
         {
             Destroy(currentCard1);
@@ -399,7 +409,7 @@ public class CardController : MonoBehaviour
 
     public void ShowInfoText(GameObject card)
     {
-        if (interactive)
+        if (interactive && !isPlayingVideo)
         {
             interactive = false;
             isInfoPanelOpen = true;

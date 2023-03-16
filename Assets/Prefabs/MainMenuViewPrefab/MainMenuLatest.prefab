@@ -1455,8 +1455,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundToggle: {fileID: 1066666150849496777}
   soundHandle: {fileID: 7787229765272613117}
-  soundOnSprite: {fileID: 21300000, guid: 02fc7801f1d74a840af65e967985c1d9, type: 3}
-  soundOffSprite: {fileID: 21300000, guid: b82c700c03e0a73469b7dd4dc007a67d, type: 3}
+  soundOnSprite: {fileID: 21300000, guid: cf801d2b17524724a9a19145a5069118, type: 3}
+  soundOffSprite: {fileID: 21300000, guid: a76898b36ed4f644d8edfff78013bf6a, type: 3}
   soundSprite: {fileID: 4527877014225076892}
   offBackgroundColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
   onBackgroundColor: {r: 0.227451, g: 0.7254902, b: 0.8705883, a: 1}
@@ -1477,7 +1477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1955669532496676027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3287,7 +3287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7545415363561084614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5066,6 +5066,8 @@ MonoBehaviour:
   soundSprite: {fileID: 4496459739514940702}
   offBackgroundColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
   onBackgroundColor: {r: 0.23529413, g: 0.73333335, b: 0.882353, a: 1}
+  offPos: {x: 0, y: 0}
+  onPos: {x: 0, y: 0}
 --- !u!1 &2871349140912143952
 GameObject:
   m_ObjectHideFlags: 0
@@ -5846,7 +5848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3182061910951348449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6190,7 +6192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7199231749793931474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11209,7 +11211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2729935958651366080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13629,8 +13631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 222.17114}
-  m_SizeDelta: {x: 677.0718, y: 135.26868}
+  m_AnchoredPosition: {x: 0, y: 212.3562}
+  m_SizeDelta: {x: 677.0718, y: 149.8093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7635922280820384254
 CanvasRenderer:
@@ -14533,7 +14535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3199879025852299843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15930,7 +15932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7733826235034273958
 RectTransform:
   m_ObjectHideFlags: 0

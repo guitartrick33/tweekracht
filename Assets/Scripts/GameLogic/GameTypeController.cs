@@ -11,17 +11,23 @@ public class GameTypeController : MonoBehaviour
     [SerializeField] private GameObject todayText;
     [SerializeField] private GameObject friendsText;
     private String currentFriendsText;
+    public GameType gameType;
 
     private void Start()
+    {
+        DisableTexts();
+    }
+
+    public void DisableTexts()
     {
         energyText.SetActive(false);
         todayText.SetActive(false);
         friendsText.SetActive(false);
-        // EnableText();
     }
 
     public void EnableText()
     {
+        DisableTexts();
         switch (StartViewController.Instance.GameType())
         {
             case (GameType.ENERGY):

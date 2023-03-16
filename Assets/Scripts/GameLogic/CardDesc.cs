@@ -36,6 +36,19 @@ public class CardDesc : MonoBehaviour
     public GameObject infoPanel;
     private bool isSoft;
 
+    private void Update()
+    {
+        //Since each card has its own videoplayer, this is the best way to mute/unmute audio based on the audio settings
+        if (videoPlayer.isPlaying && !AudioManager.Instance.isMusicOn)
+        {
+            videoPlayer.SetDirectAudioMute(0, true);  
+        }
+        else
+        {
+            videoPlayer.SetDirectAudioMute(0, false);
+        }
+    }
+
     private void Start()
     {
         for (int i = 0; i < gameObject.transform.childCount; i++)
@@ -55,9 +68,13 @@ public class CardDesc : MonoBehaviour
         {
             videoPlayer.SetDirectAudioMute(0, true);
         }
+        
         DisableTexture();
+        
         cardController = FindObjectOfType<CardController>();
         infoPanel.SetActive(false);
+        
+        //Checks for localization - needs to be changed if more languages are added
         switch (LocalizationManager.Language)
         {
             case ("English"):

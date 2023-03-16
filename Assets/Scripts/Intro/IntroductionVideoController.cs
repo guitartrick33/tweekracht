@@ -1,13 +1,17 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.SimpleLocalization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class IntroductionVideoController : MonoBehaviour
 {
-    private List<VideoClip> videoClips;
+    public List<VideoClip> videoClips;
     private VideoPlayer videoPlayer;
-    private int videoClipIndex;
+    public int videoClipIndex;
     public List<VideoClip> nlClips;
     public List<VideoClip> enClips;
 
@@ -17,6 +21,9 @@ public class IntroductionVideoController : MonoBehaviour
     [SerializeField] private ViewType viewTypeAfterIntro;
     public Transform texts;
     public Transform titles;
+
+    public GameObject loadingScreen;
+    public Image loadingBarFill;
 
     private void Awake()
     {
@@ -49,7 +56,13 @@ public class IntroductionVideoController : MonoBehaviour
         {
             t.gameObject.SetActive(false);
         }
-    } 
+    }
+
+    private void OnEnable()
+    {
+        StartVideo();
+    }
+
 
     private void StartVideo()
     {
@@ -102,5 +115,10 @@ public class IntroductionVideoController : MonoBehaviour
         backgroundPanel.SetActive(true);
         texts.GetChild(videoClipIndex).gameObject.SetActive(true);
         titles.GetChild(videoClipIndex).gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        videoClipIndex = 0;
     }
 }

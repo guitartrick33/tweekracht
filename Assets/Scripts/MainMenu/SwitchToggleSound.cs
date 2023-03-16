@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 public class SwitchToggleSound : MonoBehaviour
 {
-    [SerializeField] private Toggle soundToggle;
+    public Toggle soundToggle;
     [SerializeField] private RectTransform soundHandle;
     private Vector2 soundHandlePosition;
     [SerializeField] private Sprite soundOnSprite;
@@ -17,12 +18,25 @@ public class SwitchToggleSound : MonoBehaviour
     {
         soundHandlePosition = soundHandle.anchoredPosition;
         soundToggle.onValueChanged.AddListener(SoundFXSwitcher);
+        soundToggle.isOn = AudioManager.Instance.isSoundOn;
         if (soundToggle.isOn)
         {
             SoundFXSwitcher(true);
         }
     }
-    
+
+    private void Update()
+    {
+        if (AudioManager.Instance.isSoundOn)
+        {
+            soundToggle.isOn = true;
+        }
+        else
+        {
+            soundToggle.isOn = false;
+        }
+    }
+
     public void SoundFXSwitcher(bool on)
     {
         if (on)

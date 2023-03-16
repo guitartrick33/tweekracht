@@ -15,6 +15,7 @@ public class StartViewController : MonoBehaviour
     [SerializeField] private TMP_InputField inputText;
     [SerializeField] private List<GameObject> popups;
     private MainMenuViewController mainMenuController;
+    private GameObject currentPanel;
 
     public GameType GameType()
     {
@@ -60,12 +61,14 @@ public class StartViewController : MonoBehaviour
     {
         panel.SetActive(true);
         buttons.SetActive(false);
+        currentPanel = panel;
     }
 
     public void ClosePopUpPanel(GameObject panel)
     {
         panel.SetActive(false);
         buttons.SetActive(true);
+        currentPanel = null;
     }
 
     public void OpenFriendNamePanel()
@@ -99,5 +102,9 @@ public class StartViewController : MonoBehaviour
     private void OnDisable()
     {
         CloseFriendNamePanel();
+        if (currentPanel is not null)
+        {
+            ClosePopUpPanel(currentPanel);
+        }
     }
 }

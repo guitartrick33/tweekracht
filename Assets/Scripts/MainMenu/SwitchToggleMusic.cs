@@ -14,13 +14,27 @@ public class SwitchToggleMusic : MonoBehaviour
     [SerializeField] private Image soundSprite;
     public Color offBackgroundColor;
     public Color onBackgroundColor;
+    public bool isStart; //BAD SOLUTION DONT DO THAT
     void Start()
     {
         soundHandlePosition = soundHandle.anchoredPosition;
         soundToggle.onValueChanged.AddListener(MusicSwitcher);
+        soundToggle.isOn = AudioManager.Instance.isMusicOn;
         if (soundToggle.isOn)
         {
             MusicSwitcher(true);
+        }
+    }
+    
+    private void Update()
+    {
+        if (AudioManager.Instance.isMusicOn)
+        {
+            soundToggle.isOn = true;
+        }
+        else
+        {
+            soundToggle.isOn = false;
         }
     }
     
