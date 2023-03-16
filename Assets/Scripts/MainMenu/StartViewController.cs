@@ -14,6 +14,7 @@ public class StartViewController : MonoBehaviour
     [SerializeField] private GameObject buttons;
     [SerializeField] private TMP_InputField inputText;
     [SerializeField] private List<GameObject> popups;
+    private MainMenuViewController mainMenuController;
 
     public GameType GameType()
     {
@@ -41,6 +42,8 @@ public class StartViewController : MonoBehaviour
         {
             g.SetActive(false);
         }
+
+        mainMenuController = FindObjectOfType<MainMenuViewController>();
     }
     
     public void SetGameTypeEnergy()
@@ -80,8 +83,12 @@ public class StartViewController : MonoBehaviour
 
     public void SetGameTypeFriends(TextMeshProUGUI inputText)
     {
-        gameType = global::GameType.FRIENDS;
-        friendsName = inputText.text;
+        if (this.inputText.text != "" && this.inputText.text != String.Empty)
+        {
+            gameType = global::GameType.FRIENDS;
+            friendsName = inputText.text;
+            mainMenuController.StartGame();
+        }
     }
 
     public String GetFriendsName()

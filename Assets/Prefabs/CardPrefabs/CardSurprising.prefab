@@ -414,19 +414,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5621923350640235047}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5713546479724107730}
-        m_TargetAssemblyTypeName: CardDesc, Assembly-CSharp
-        m_MethodName: ShowTextDesc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5713546479724107730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,8 +436,10 @@ MonoBehaviour:
   isLast: 0
   nextCard1: {fileID: 2309430056049265578, guid: 5eef144104bc1c64c96ba787bcfa54e3, type: 3}
   nextCard2: {fileID: 2309430056049265578, guid: 45c7814349530564bb31267aa5985221, type: 3}
-  hardClip: {fileID: 32900000, guid: 5b74ee9d846cb004a8c30c0cae691451, type: 3}
-  softClip: {fileID: 32900000, guid: 741e5e92d2f846046a2916f7bfe40f3f, type: 3}
+  hardClipNL: {fileID: 32900000, guid: 5b74ee9d846cb004a8c30c0cae691451, type: 3}
+  softClipNL: {fileID: 32900000, guid: 741e5e92d2f846046a2916f7bfe40f3f, type: 3}
+  hardClipEN: {fileID: 32900000, guid: 2e7e17e85b42d814fbad3186c6af3d63, type: 3}
+  softClipEN: {fileID: 32900000, guid: 7e346c8f4d0334c43bb8e096c5689979, type: 3}
   videoPlayer: {fileID: 6990076912556096729}
   texture: {fileID: 0}
   infoPanel: {fileID: 5163498140624645295}
@@ -1264,8 +1254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.5371, y: -2.6807}
-  m_SizeDelta: {x: 447.1584, y: 658.8203}
+  m_AnchoredPosition: {x: -4.2128, y: -2.6807}
+  m_SizeDelta: {x: 450.5097, y: 658.8203}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2515638753691149940
 CanvasRenderer:

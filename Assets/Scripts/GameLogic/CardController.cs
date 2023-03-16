@@ -135,15 +135,7 @@ public class CardController : MonoBehaviour
             AudioManager.Instance.PlayButtonClick();
             CardDesc cardDesc = card.GetComponent<CardDesc>();
             cardDesc.videoPlayer.targetCamera = mainCamera;
-        
-            if (side == CardTypeEnum.HARD)
-            {
-                cardDesc.videoPlayer.clip = cardDesc.hardClip;
-            }
-            else if(side == CardTypeEnum.SOFT)
-            {
-                cardDesc.videoPlayer.clip = cardDesc.softClip;
-            }
+            cardDesc.SetVideoClip();
         
 
             if (ReferenceEquals(card, currentCard1))

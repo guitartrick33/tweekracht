@@ -39,7 +39,6 @@ public class IntroductionVideoController : MonoBehaviour
             case ("Dutch"):
                 videoClips.AddRange(nlClips);
                 break;
-                
         }
         StartVideo();
         foreach (Transform t in texts)

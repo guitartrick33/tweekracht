@@ -565,8 +565,10 @@ MonoBehaviour:
   isLast: 1
   nextCard1: {fileID: 2309430056049265578, guid: f61b689e8f935164fa189237e01f44b3, type: 3}
   nextCard2: {fileID: 2309430056049265578, guid: be72c9c32cc4f94428a99d5972e4a338, type: 3}
-  hardClip: {fileID: 32900000, guid: 16bfbc3440572d94380ac50d1f09dadc, type: 3}
-  softClip: {fileID: 32900000, guid: 917382448665e8647a5c56334d8f3dc1, type: 3}
+  hardClipNL: {fileID: 32900000, guid: 16bfbc3440572d94380ac50d1f09dadc, type: 3}
+  softClipNL: {fileID: 32900000, guid: 917382448665e8647a5c56334d8f3dc1, type: 3}
+  hardClipEN: {fileID: 32900000, guid: 70a571a7e8732534290912496d79709f, type: 3}
+  softClipEN: {fileID: 32900000, guid: b953dbd1ab1c247448d14d180dae14d8, type: 3}
   videoPlayer: {fileID: 259752928039337253}
   texture: {fileID: 0}
   infoPanel: {fileID: 1195170712748660520}
@@ -1337,8 +1339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.0046, y: -3.2543}
-  m_SizeDelta: {x: 446.0935, y: 657.6731}
+  m_AnchoredPosition: {x: -2.8777, y: -3.2543}
+  m_SizeDelta: {x: 447.8397, y: 657.6731}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5091585936136183425
 CanvasRenderer:

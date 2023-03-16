@@ -884,8 +884,10 @@ MonoBehaviour:
   isLast: 0
   nextCard1: {fileID: 2309430056049265578, guid: 1d97967afa254214c9ee8af7556d6420, type: 3}
   nextCard2: {fileID: 2309430056049265578, guid: 9e715551f6899ff49ad551f52ea5ca54, type: 3}
-  hardClip: {fileID: 32900000, guid: 8dd2e6cdcab1306449ffee5d34e6ef2c, type: 3}
-  softClip: {fileID: 32900000, guid: 5d975b7cd58ed094db087b825751daac, type: 3}
+  hardClipNL: {fileID: 32900000, guid: 8dd2e6cdcab1306449ffee5d34e6ef2c, type: 3}
+  softClipNL: {fileID: 32900000, guid: 5d975b7cd58ed094db087b825751daac, type: 3}
+  hardClipEN: {fileID: 32900000, guid: 33e28f21defd72040ae0ae33e3c2a61c, type: 3}
+  softClipEN: {fileID: 32900000, guid: 136348d692287124db7185c044785fdb, type: 3}
   videoPlayer: {fileID: 5385378489522108299}
   texture: {fileID: 0}
   infoPanel: {fileID: 8360347277138747007}

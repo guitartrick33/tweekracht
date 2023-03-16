@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,8 +24,12 @@ public class CardDesc : MonoBehaviour
     public GameObject nextCard1;
     public GameObject nextCard2;
     [Space]
-    public VideoClip hardClip;
-    public VideoClip softClip;
+    public VideoClip hardClipNL;
+    public VideoClip softClipNL;
+    [Space]
+    public VideoClip hardClipEN;
+    public VideoClip softClipEN;
+    private VideoClip currentClip;
     public VideoPlayer videoPlayer;
     public GameObject texture;
     private CardController cardController;
@@ -53,6 +58,34 @@ public class CardDesc : MonoBehaviour
         DisableTexture();
         cardController = FindObjectOfType<CardController>();
         infoPanel.SetActive(false);
+        switch (LocalizationManager.Language)
+        {
+            case ("English"):
+                if (isSoft)
+                {
+                    currentClip = softClipEN;
+                }
+                else
+                {
+                    currentClip = hardClipEN;
+                }
+                break;
+            case ("Dutch"):
+                if (isSoft)
+                {
+                    currentClip = softClipNL;
+                }
+                else
+                {
+                    currentClip = hardClipNL;
+                }
+                break;
+        }
+    }
+
+    public void SetVideoClip()
+    {
+        videoPlayer.clip = currentClip;
     }
 
     public String CardName()
