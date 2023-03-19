@@ -2082,7 +2082,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 5988098973846272181}
-  isOpen: 0
 --- !u!1 &806807871131018554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,9 +2811,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8026592713850436180}
   - {fileID: 6835652504934919880}
   - {fileID: 1923062213315273571}
+  - {fileID: 8026592713850436180}
   - {fileID: 4078550287182744289}
   m_Father: {fileID: 6500550608413459946}
   m_RootOrder: -1

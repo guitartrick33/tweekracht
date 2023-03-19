@@ -6,17 +6,14 @@ using UnityEngine;
 public class SettingsController : MonoBehaviour
 {
     public GameObject settingsPanel;
-    public bool isOpen;
 
     private void Awake()
     {
-        isOpen = false;
         settingsPanel.SetActive(false);
     }
 
     public void OpenSettings()
     {
-        isOpen = true;
         Time.timeScale = 0;
         settingsPanel.SetActive(true);
         if (GetComponent<CardController>().vp != null)
@@ -27,7 +24,6 @@ public class SettingsController : MonoBehaviour
 
     public void CloseSettings()
     {
-        isOpen = false;
         Time.timeScale = 1;
         settingsPanel.SetActive(false);
         if (GetComponent<CardController>().vp is not null)
@@ -36,15 +32,15 @@ public class SettingsController : MonoBehaviour
         }
     }
 
-    public void SwitchSToggle(SwitchToggleSound s)
-    {
-        s.SoundFXSwitcher(AudioManager.Instance.isSoundOn);
-    }
-    
-    public void SwitchMToggle(SwitchToggleMusic s)
-    {
-        s.MusicSwitcher(AudioManager.Instance.isMusicOn);
-    }
+    // public void SwitchSToggle(SwitchToggleSound s)
+    // {
+    //     s.SoundFXSwitcher(AudioManager.Instance.isSoundOn);
+    // }
+    //
+    // public void SwitchMToggle(SwitchToggleMusic s)
+    // {
+    //     s.MusicSwitcher(AudioManager.Instance.isMusicOn);
+    // }
 
     public void GoBackToMainMenu()
     {

@@ -22,9 +22,6 @@ public class IntroductionVideoController : MonoBehaviour
     public Transform texts;
     public Transform titles;
 
-    public GameObject loadingScreen;
-    public Image loadingBarFill;
-
     private void Awake()
     {
         videoClips = new List<VideoClip>();
