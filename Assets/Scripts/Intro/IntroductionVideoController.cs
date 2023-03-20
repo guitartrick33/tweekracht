@@ -45,13 +45,21 @@ public class IntroductionVideoController : MonoBehaviour
                 break;
         }
         StartVideo();
-        foreach (Transform t in texts)
+        
+        if (texts is not null)
         {
-            t.gameObject.SetActive(false);
+            foreach (Transform t in texts)
+            {
+                t.gameObject.SetActive(false);
+            } 
         }
-        foreach (Transform t in titles)
+
+        if (titles is not null)
         {
-            t.gameObject.SetActive(false);
+            foreach (Transform t in titles)
+            {
+                t.gameObject.SetActive(false);
+            } 
         }
     }
 
@@ -71,7 +79,7 @@ public class IntroductionVideoController : MonoBehaviour
         videoPlayer.Play();
         if (videoClipIndex >= videoClips.Count - 1)
         {
-            videoPlayer.loopPointReached += SkipVideo;
+            videoPlayer.loopPointReached += OpenPanel;
         }
         else
         {

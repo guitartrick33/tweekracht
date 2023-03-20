@@ -176,18 +176,17 @@ public class CardController : MonoBehaviour
     {
         isPlayingVideo = false;
         
-        spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", false);
-        spawnCard2Location.GetComponent<Animator>().SetBool("SetToLarge", false);
-        
-        yield return new WaitForSeconds(0.6f);
-        
-        spawnCard1Location.SetActive(true);
-        spawnCard2Location.SetActive(true);
-        
-        texture.Release();
-        
         if (!card.GetComponent<CardDesc>().isLast)
         {
+            spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", false);
+            spawnCard2Location.GetComponent<Animator>().SetBool("SetToLarge", false);
+        
+            yield return new WaitForSeconds(0.6f);
+        
+            spawnCard1Location.SetActive(true);
+            spawnCard2Location.SetActive(true);
+            
+            texture.Release();
             card1Names.Add(currentCard1.GetComponent<CardDesc>().CardName());
             card2Names.Add(currentCard2.GetComponent<CardDesc>().CardName());
             
@@ -211,7 +210,7 @@ public class CardController : MonoBehaviour
         }
         else
         {
-            GetResult(card);
+            StartCoroutine(GetResult(card));
         }
     }
     
@@ -221,8 +220,21 @@ public class CardController : MonoBehaviour
         b.onClick.AddListener(delegate { PickCard(card); });
     }
 
-    public void GetResult(GameObject card) //Result view opens up with the result of each side
+    IEnumerator GetResult(GameObject card) //Result view opens up with the result of each side
     {
+        // card.GetComponent<CardDesc>().DisableTexture();
+        if (ReferenceEquals(card, currentCard1))
+        {
+            spawnCard1Location.GetComponent<Animator>().SetBool("SwipeOutBool", true);
+            spawnCard2Location.SetActive(false);
+        }
+        else
+        {
+            spawnCard2Location.GetComponent<Animator>().SetBool("SwipeOutBool", true);
+            spawnCard1Location.SetActive(false);
+        }
+
+        yield return new WaitForSeconds(1);
         spawnCard1Location.SetActive(false);
         spawnCard2Location.SetActive(false);
         currentChoice = card.GetComponent<CardDesc>().CardText();
@@ -260,8 +272,7 @@ public class CardController : MonoBehaviour
     {
         if (resultSideTwo == String.Empty)
         {
-            ContinuePath();
-            resultPanel.SetActive(false);
+            StartCoroutine(ContinuePath());
         }
         else
         {
@@ -269,8 +280,11 @@ public class CardController : MonoBehaviour
         }
     }
     
-    public void ContinuePath() //Continues path after you have completed the first side (e.g. you chose soft first, reset the cards to display hard side only
+    IEnumerator ContinuePath() //Continues path after you have completed the first side (e.g. you chose soft first, reset the cards to display hard side only
     {
+        resultPanel.GetComponentInChildren<Animator>().SetBool("SwipeOut", true);
+        yield return new WaitForSeconds(1.5f);
+        resultPanel.SetActive(false);
         texture.Release();
         Destroy(currentCard1);
         Destroy(currentCard2);
