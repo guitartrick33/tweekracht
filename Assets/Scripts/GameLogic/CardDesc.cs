@@ -15,7 +15,9 @@ public class CardDesc : MonoBehaviour
     public GameObject hardSideText;
     public GameObject softSideDiamond;
     public GameObject hardSideDiamond;
+    public TextMeshProUGUI description;
     
+
     [Space]
     [Header("Check if this is a final choice")]
     [Space]
@@ -29,12 +31,15 @@ public class CardDesc : MonoBehaviour
     [Space]
     public VideoClip hardClipEN;
     public VideoClip softClipEN;
+    
     private VideoClip currentClip;
     public VideoPlayer videoPlayer;
     public GameObject texture;
+    
     private CardController cardController;
     public GameObject infoPanel;
     private bool isSoft;
+    
 
     private void Update()
     {

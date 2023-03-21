@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class FinalPageController : MonoBehaviour
 {
@@ -10,6 +12,15 @@ public class FinalPageController : MonoBehaviour
     [SerializeField] private GameObject popUpPanel;
     [SerializeField] private GameObject circleImages;
     [SerializeField] private GameObject saveButton;
+
+    public string finalResultName;
+    public string finalResultDesc;
+    public string hardSideTitle;
+    public string hardSideDesc;
+    public string softSideTitle;
+    public string softSideDesc;
+    public string balanceDesc;
+    public string matchDesc;
 
     private void Start()
     {
@@ -33,5 +44,13 @@ public class FinalPageController : MonoBehaviour
         mainScrollRect.enabled = true;
         circleImages.SetActive(true);
         saveButton.SetActive(true);
+    }
+
+    public void ClearResults()
+    {
+        hardSideDesc = String.Empty;
+        softSideDesc = String.Empty;
+        hardSideTitle = String.Empty;
+        softSideTitle = String.Empty;
     }
 }

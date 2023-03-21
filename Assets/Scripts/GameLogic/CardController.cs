@@ -229,6 +229,7 @@ public class CardController : MonoBehaviour
         {
             spawnCard1Location.GetComponent<Animator>().SetBool("SwipeOutBool", true);
             spawnCard2Location.SetActive(false);
+            
         }
         else
         {
@@ -243,6 +244,9 @@ public class CardController : MonoBehaviour
         if (side == CardTypeEnum.SOFT && resultSoftSide == String.Empty)
         {
             resultSoftSide = currentChoice;
+            finalPanel.GetComponent<FinalPageController>().softSideTitle = resultSoftSide;
+            finalPanel.GetComponent<FinalPageController>().softSideDesc =
+                card.GetComponent<CardDesc>().description.text;
             resultPanel.SetActive(true);
             resultPanel.GetComponentInChildren<ResultController>().SetSoftSide(resultSoftSide);
             CheckBackground(resultCard);
@@ -250,6 +254,9 @@ public class CardController : MonoBehaviour
         else if(side == CardTypeEnum.HARD && resultHardSide == String.Empty)
         {
             resultHardSide = currentChoice;
+            finalPanel.GetComponent<FinalPageController>().hardSideTitle = resultHardSide;
+            finalPanel.GetComponent<FinalPageController>().hardSideDesc =
+                card.GetComponent<CardDesc>().description.text;
             resultPanel.SetActive(true);
             resultPanel.GetComponentInChildren<ResultController>().SetHardSide(resultHardSide);
             CheckBackground(resultCard);
@@ -296,12 +303,11 @@ public class CardController : MonoBehaviour
     public void ResetSidesCompletely() //Method used to reset both sides
     {
         resultPanel.SetActive(false);
+        finalPanel.GetComponent<FinalPageController>().ClearResults();
         Destroy(currentCard1);
         Destroy(currentCard2);
         spawnCard1Location.SetActive(true);
         spawnCard2Location.SetActive(true);
-        // spawnCard1Location.GetComponent<Button>().interactable = false;
-        // spawnCard2Location.GetComponent<Button>().interactable = false;
         card1Names.Clear();
         card2Names.Clear();
         resultSoftSide = String.Empty;
@@ -388,27 +394,6 @@ public class CardController : MonoBehaviour
                 }
             }
         }
-        // else
-        // {
-        //     if (resultSideOne != String.Empty)
-        //     {
-        //         if (side == CardTypeEnum.HARD)
-        //         {   
-        //             spawnCard1Location.SetActive(false);
-        //             Debug.Log("Hi");
-        //         }
-        //         else
-        //         {
-        //             spawnCard2Location.SetActive(false);
-        //             Debug.Log("Hi");
-        //         }
-        //         Destroy(currentCard1);
-        //         Destroy(currentCard2);
-        //         Debug.Log("Hi");
-        //     }
-            // Destroy(currentCard1);
-            // Destroy(currentCard2);
-        // }
     }
 
     public void ShowInfoText(GameObject card)

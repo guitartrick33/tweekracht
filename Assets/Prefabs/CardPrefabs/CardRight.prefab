@@ -689,6 +689,7 @@ MonoBehaviour:
   hardSideText: {fileID: 8131580403568738697}
   softSideDiamond: {fileID: 8292098628600559910}
   hardSideDiamond: {fileID: 8297512840066979418}
+  description: {fileID: 7881078753848110314}
   isLast: 1
   nextCard1: {fileID: 0}
   nextCard2: {fileID: 0}

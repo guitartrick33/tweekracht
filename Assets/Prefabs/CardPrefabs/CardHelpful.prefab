@@ -518,10 +518,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Helpful
   cardText: {fileID: 9110502846926378480}
-  softSideText: {fileID: 0}
-  hardSideText: {fileID: 0}
-  softSideDiamond: {fileID: 0}
-  hardSideDiamond: {fileID: 0}
+  softSideText: {fileID: 4096174861150592432}
+  hardSideText: {fileID: 3858053514154589188}
+  softSideDiamond: {fileID: 6187532700405952407}
+  hardSideDiamond: {fileID: 1204362920217014438}
+  description: {fileID: 1533470487829699061}
   isLast: 1
   nextCard1: {fileID: 0}
   nextCard2: {fileID: 0}
