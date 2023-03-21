@@ -26,7 +26,7 @@ public class SettingsController : MonoBehaviour
     {
         Time.timeScale = 1;
         settingsPanel.SetActive(false);
-        if (GetComponent<CardController>().vp is not null)
+        if (GetComponent<CardController>().vp != null)
         {
             GetComponent<CardController>().vp.Play();
         }

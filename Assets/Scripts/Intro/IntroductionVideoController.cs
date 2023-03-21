@@ -26,7 +26,6 @@ public class IntroductionVideoController : MonoBehaviour
     {
         videoClips = new List<VideoClip>();
         videoPlayer = GetComponent<VideoPlayer>();
-        videoClipIndex = 0;
         if (backgroundPanel != null)
         {
             backgroundPanel.SetActive(false);
@@ -35,6 +34,7 @@ public class IntroductionVideoController : MonoBehaviour
 
     private void Start()
     {
+        videoClipIndex = 0;
         switch (LocalizationManager.Language)
         {
             case ("English"):
@@ -92,6 +92,13 @@ public class IntroductionVideoController : MonoBehaviour
         if (videoClipIndex >= videoClips.Count - 1)
         {
             videoPlayer.Stop();
+            if (TryGetComponent(out CheckFirstTime firstTime))
+            {
+                if (!PlayerPrefs.HasKey("isFirstTimeBool") && PlayerPrefs.GetInt("isFirstTimeBool") != 1)
+                {
+                    firstTime.SetFirstTimeTrue();
+                }
+            }
             ViewManager.Instance.SwitchView(viewTypeAfterIntro);
         }
         else

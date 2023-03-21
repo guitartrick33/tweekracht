@@ -21,7 +21,7 @@ public class SaveName : MonoBehaviour
 
     private void Awake()
     {
-        //PlayerPrefs.DeleteKey("myNameKey");
+        // PlayerPrefs.DeleteKey("myNameKey");
     }
 
     void Start()

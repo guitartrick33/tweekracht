@@ -10,6 +10,7 @@ public class MainMenuViewController : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropDownLanguages;
     public List<TextMeshProUGUI> textGuis;
     public Color letterColor;
+    public Color letterColorTest;
     [SerializeField] private Sprite mainMenuBackgroundPhones;
     [SerializeField] private Sprite mainMenuBackgroundTablets;
     [Space]
@@ -45,17 +46,13 @@ public class MainMenuViewController : MonoBehaviour
     private void Start()
     {
         LocalizationController.Instance.CheckSystemLocalization();
-        Application.targetFrameRate = 60;
+        // Application.targetFrameRate = 60;
         currentPage = pages[0];
         foreach (GameObject page in pages)
         {
             page.SetActive(false);
         }
         currentPage.SetActive(true);
-    }
-
-    private void Update()
-    {
         GetFirstWord();
     }
 
@@ -77,6 +74,7 @@ public class MainMenuViewController : MonoBehaviour
     public void SetLocalization() //Usage of this method can be seen for the OnValueChanged event in the language dropdown component
     {
         LocalizationController.Instance.SetLocalization(dropDownLanguages.options[dropDownLanguages.value].text);
+        GetFirstWord();
     }
 
     public void GetFirstWord() //This method is used to color the first word in each button - design choice made by Tweekracht
@@ -90,7 +88,7 @@ public class MainMenuViewController : MonoBehaviour
                 if (!containsOnlyOneWord)
                 {
                     string[] words = s.Split(' ');
-                    string word = $"<color=#{letterColor.ToHexString()}>" + words[0] + $"</color=#{letterColor.ToHexString()}> " + words[1];
+                    string word = $"<color=#{letterColor.ToHexString()}>" + words[0] + $"</color=#{letterColor.ToHexString()}> " + $"<color=#{letterColorTest.ToHexString()}>" + words[1] + $"</color=#{letterColorTest.ToHexString()}>";
                     tgui.text = word;
                 }
                 else

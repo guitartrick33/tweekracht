@@ -35,8 +35,8 @@ public class CardController : MonoBehaviour
 
     public CardTypeEnum side;
 
-    public string resultSideOne;
-    public string resultSideTwo;
+    public string resultSoftSide;
+    public string resultHardSide;
     public GameObject resultPanel;
     public GameObject resultCard;
 
@@ -49,6 +49,8 @@ public class CardController : MonoBehaviour
     private bool isInfoPanelOpen;
     public VideoPlayer vp;
 
+    public GameObject finalPanel;
+
     private void Awake()
     {
         card1Names = new List<string>();
@@ -56,9 +58,10 @@ public class CardController : MonoBehaviour
         
         side = CardTypeEnum.NONE;
         
-        resultSideOne = String.Empty;
-        resultSideTwo = String.Empty;
+        resultSoftSide = String.Empty;
+        resultHardSide = String.Empty;
         resultPanel.SetActive(false);
+        finalPanel.SetActive(false);
         
         backButton.SetActive(false);
         
@@ -222,7 +225,6 @@ public class CardController : MonoBehaviour
 
     IEnumerator GetResult(GameObject card) //Result view opens up with the result of each side
     {
-        // card.GetComponent<CardDesc>().DisableTexture();
         if (ReferenceEquals(card, currentCard1))
         {
             spawnCard1Location.GetComponent<Animator>().SetBool("SwipeOutBool", true);
@@ -238,45 +240,33 @@ public class CardController : MonoBehaviour
         spawnCard1Location.SetActive(false);
         spawnCard2Location.SetActive(false);
         currentChoice = card.GetComponent<CardDesc>().CardText();
-        if (resultSideOne == String.Empty)
+        if (side == CardTypeEnum.SOFT && resultSoftSide == String.Empty)
         {
-            resultSideOne = currentChoice;
+            resultSoftSide = currentChoice;
             resultPanel.SetActive(true);
-            if (side == CardTypeEnum.SOFT)
-            {
-                resultPanel.GetComponentInChildren<ResultController>().SetSoftSide(resultSideOne);
-            }
-            else if (side == CardTypeEnum.HARD)
-            {
-                resultPanel.GetComponentInChildren<ResultController>().SetHardSide(resultSideOne);
-            }
+            resultPanel.GetComponentInChildren<ResultController>().SetSoftSide(resultSoftSide);
             CheckBackground(resultCard);
         }
-        else if(resultSideTwo == String.Empty)
+        else if(side == CardTypeEnum.HARD && resultHardSide == String.Empty)
         {
-            resultSideTwo = currentChoice;
+            resultHardSide = currentChoice;
             resultPanel.SetActive(true);
-            if (side == CardTypeEnum.SOFT)
-            {
-                resultPanel.GetComponentInChildren<ResultController>().SetSoftSide(resultSideTwo);
-            }
-            else if (side == CardTypeEnum.HARD)
-            {
-                resultPanel.GetComponentInChildren<ResultController>().SetHardSide(resultSideTwo);
-            }
+            resultPanel.GetComponentInChildren<ResultController>().SetHardSide(resultHardSide);
             CheckBackground(resultCard);
         }
     }
     
     public void CloseResultPanel() //Closing result panel and resetting the cards
     {
-        if (resultSideTwo == String.Empty)
+        if (resultHardSide == String.Empty || resultSoftSide == String.Empty)
         {
             StartCoroutine(ContinuePath());
         }
         else
         {
-            Debug.Log("Open final panel");
+            gameObject.SetActive(false);
+            resultPanel.SetActive(false);
+            finalPanel.SetActive(true);
         }
     }
     
@@ -314,8 +304,8 @@ public class CardController : MonoBehaviour
         // spawnCard2Location.GetComponent<Button>().interactable = false;
         card1Names.Clear();
         card2Names.Clear();
-        resultSideOne = String.Empty;
-        resultSideTwo = String.Empty;
+        resultSoftSide = String.Empty;
+        resultHardSide = String.Empty;
         side = CardTypeEnum.NONE;
         isPlayingVideo = false;
         isInfoPanelOpen = false;

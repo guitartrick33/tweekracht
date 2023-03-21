@@ -117,8 +117,8 @@ public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         if (!_dragging)
         {
-            _scrollRectComponent.vertical = true;
-            _scrollRectComponent.movementType = ScrollRect.MovementType.Unrestricted;
+            // _scrollRectComponent.vertical = true;
+            // _scrollRectComponent.movementType = ScrollRect.MovementType.Unrestricted;
         }
         else if (_dragging)
         {
