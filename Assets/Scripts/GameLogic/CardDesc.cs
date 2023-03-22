@@ -32,7 +32,7 @@ public class CardDesc : MonoBehaviour
     public VideoClip hardClipEN;
     public VideoClip softClipEN;
     
-    private VideoClip currentClip;
+    public VideoClip currentClip;
     public VideoPlayer videoPlayer;
     public GameObject texture;
     
