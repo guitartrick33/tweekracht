@@ -685,6 +685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: It must be right
   cardText: {fileID: 9110502846926378480}
+  cardTitle: 9
   softSideText: {fileID: 6606395386843480905}
   hardSideText: {fileID: 8131580403568738697}
   softSideDiamond: {fileID: 8292098628600559910}
@@ -697,6 +698,7 @@ MonoBehaviour:
   softClipNL: {fileID: 32900000, guid: 8f6d91d551776a3438baa91459647251, type: 3}
   hardClipEN: {fileID: 32900000, guid: d420cfdfd6934c64eb58f4f3d9241030, type: 3}
   softClipEN: {fileID: 32900000, guid: 1324c63fa7b87a0409d02929b4f3e842, type: 3}
+  currentClip: {fileID: 0}
   videoPlayer: {fileID: 5556347664343803220}
   texture: {fileID: 0}
   infoPanel: {fileID: 7543822697419820768}

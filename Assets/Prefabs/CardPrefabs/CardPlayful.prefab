@@ -457,6 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Playful
   cardText: {fileID: 9110502846926378480}
+  cardTitle: 7
   softSideText: {fileID: 3838107827271990800}
   hardSideText: {fileID: 3327145429032911192}
   softSideDiamond: {fileID: 3151416602598790085}
@@ -469,6 +470,7 @@ MonoBehaviour:
   softClipNL: {fileID: 32900000, guid: a9c68354ed57b774ba215271405fd1f1, type: 3}
   hardClipEN: {fileID: 32900000, guid: 0364341d7554b0d49883124e137b7281, type: 3}
   softClipEN: {fileID: 32900000, guid: 34c7ba0334aa62f40a2624d04d188f42, type: 3}
+  currentClip: {fileID: 0}
   videoPlayer: {fileID: 4939295981911168628}
   texture: {fileID: 0}
   infoPanel: {fileID: 6679107288605201084}

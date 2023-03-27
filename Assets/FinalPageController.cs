@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -68,13 +67,11 @@ public class FinalPageController : MonoBehaviour
 
     public void UpdatePage()
     {
-        if (cardDescHardFinal != null && cardDescSoftFinal != null)
-        {
-            softSideDescUI.text = cardDescSoftFinal.description.text;
-            softSideTitleUI.text = cardDescSoftFinal.CardText();
-            hardSideDescUI.text = cardDescHardFinal.description.text;
-            hardSideTitleUI.text = cardDescHardFinal.CardText();
-        }
+        texture.Release();
+        softSideDescUI.text = cardDescSoftFinal.description.text;
+        softSideTitleUI.text = cardDescSoftFinal.CardText();
+        hardSideDescUI.text = cardDescHardFinal.description.text;
+        hardSideTitleUI.text = cardDescHardFinal.CardText();
     }
 
     // public void ClickVideoClip(bool isSoft)
@@ -144,7 +141,6 @@ public class FinalPageController : MonoBehaviour
 
     public void OnEnable()
     {
-        UpdatePage();
-        texture.Release();
+        // UpdatePage();
     }
 }

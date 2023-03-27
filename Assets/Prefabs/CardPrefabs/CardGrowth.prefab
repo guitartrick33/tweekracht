@@ -384,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Forward and Growth
   cardText: {fileID: 9110502846926378480}
+  cardTitle: 4
   softSideText: {fileID: 8038241646403477559}
   hardSideText: {fileID: 5848946376632370677}
   softSideDiamond: {fileID: 7554041006247063113}
@@ -396,6 +397,7 @@ MonoBehaviour:
   softClipNL: {fileID: 32900000, guid: 97fbc8a30db76c74eaf5060e501ccf17, type: 3}
   hardClipEN: {fileID: 32900000, guid: 9397e96b07406bc4cb32303fed2b0180, type: 3}
   softClipEN: {fileID: 32900000, guid: c10b8802bbc3a65459153d01274d2e8a, type: 3}
+  currentClip: {fileID: 0}
   videoPlayer: {fileID: 6684746121358460873}
   texture: {fileID: 0}
   infoPanel: {fileID: 6776696934854229072}

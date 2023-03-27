@@ -593,6 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Progressive
   cardText: {fileID: 9110502846926378480}
+  cardTitle: 8
   softSideText: {fileID: 5113121380246836330}
   hardSideText: {fileID: 7292365566050936747}
   softSideDiamond: {fileID: 584418772951872221}
@@ -605,6 +606,7 @@ MonoBehaviour:
   softClipNL: {fileID: 32900000, guid: d677bbf880c7b244ab0dbb11d3ddac8b, type: 3}
   hardClipEN: {fileID: 32900000, guid: 5a543b1882ba5ba4b9adbe13e040c8ae, type: 3}
   softClipEN: {fileID: 32900000, guid: f9f0472f432810348bbf1ec07c237d16, type: 3}
+  currentClip: {fileID: 0}
   videoPlayer: {fileID: 3860926059507302410}
   texture: {fileID: 0}
   infoPanel: {fileID: 8644539507910545112}

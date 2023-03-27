@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -46,6 +47,7 @@ public class MainMenuViewController : MonoBehaviour
     private void Start()
     {
         LocalizationController.Instance.CheckSystemLocalization();
+        dropDownLanguages.captionText.text = LocalizationManager.Language;
         // Application.targetFrameRate = 60;
         currentPage = pages[0];
         foreach (GameObject page in pages)
@@ -58,17 +60,38 @@ public class MainMenuViewController : MonoBehaviour
 
     public void RedirectToWebsite() //Redirects the user upon touching it to Tweekracht's webpage
     {
-        Application.OpenURL("https://www.tweekracht.nl/");
+        if (LocalizationManager.Language == "Dutch")
+        {
+            Application.OpenURL("https://www.tweekracht.nl/nl/home/");
+        }
+        else
+        {
+            Application.OpenURL("https://www.tweekracht.nl/en/home-2/");
+        }
     }
 
     public void RedirectToShop()
     {
-        Application.OpenURL("https://www.tweekracht.nl/nl/product-categorie/spel/");
+        if (LocalizationManager.Language == "Dutch")
+        {
+            Application.OpenURL("https://www.tweekracht.nl/nl/product-categorie/spel/");
+        }
+        else
+        {
+            Application.OpenURL("https://www.tweekracht.nl/en/shop/");
+        }
     }
     
     public void RedirectToOurView()
     {
-        Application.OpenURL("https://www.tweekracht.nl/nl/individueel/");
+        if (LocalizationManager.Language == "Dutch")
+        {
+            Application.OpenURL("https://www.tweekracht.nl/nl/individueel/");
+        }
+        else
+        {
+            Application.OpenURL("https://www.tweekracht.nl/en/background-2/");
+        }
     }
 
     public void SetLocalization() //Usage of this method can be seen for the OnValueChanged event in the language dropdown component

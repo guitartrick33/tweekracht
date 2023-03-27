@@ -429,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Surprising
   cardText: {fileID: 9110502846926378480}
+  cardTitle: 12
   softSideText: {fileID: 6647518257984967825}
   hardSideText: {fileID: 3818474109436555553}
   softSideDiamond: {fileID: 4478254018188249298}
@@ -441,6 +442,7 @@ MonoBehaviour:
   softClipNL: {fileID: 32900000, guid: 741e5e92d2f846046a2916f7bfe40f3f, type: 3}
   hardClipEN: {fileID: 32900000, guid: 2e7e17e85b42d814fbad3186c6af3d63, type: 3}
   softClipEN: {fileID: 32900000, guid: 7e346c8f4d0334c43bb8e096c5689979, type: 3}
+  currentClip: {fileID: 0}
   videoPlayer: {fileID: 6990076912556096729}
   texture: {fileID: 0}
   infoPanel: {fileID: 5163498140624645295}

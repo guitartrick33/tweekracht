@@ -635,6 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Warm and Cosy
   cardText: {fileID: 9110502846926378480}
+  cardTitle: 13
   softSideText: {fileID: 4845159679597786736}
   hardSideText: {fileID: 5769683863233242277}
   softSideDiamond: {fileID: 9218760597086717507}
@@ -647,6 +648,7 @@ MonoBehaviour:
   softClipNL: {fileID: 32900000, guid: 917382448665e8647a5c56334d8f3dc1, type: 3}
   hardClipEN: {fileID: 32900000, guid: 70a571a7e8732534290912496d79709f, type: 3}
   softClipEN: {fileID: 32900000, guid: b953dbd1ab1c247448d14d180dae14d8, type: 3}
+  currentClip: {fileID: 0}
   videoPlayer: {fileID: 259752928039337253}
   texture: {fileID: 0}
   infoPanel: {fileID: 1195170712748660520}

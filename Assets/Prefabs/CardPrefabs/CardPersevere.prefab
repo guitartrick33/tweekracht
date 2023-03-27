@@ -1121,6 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: To Persevere
   cardText: {fileID: 9110502846926378480}
+  cardTitle: 6
   softSideText: {fileID: 2065275282057482023}
   hardSideText: {fileID: 66254752783547900}
   softSideDiamond: {fileID: 6174494258056356381}
@@ -1133,6 +1134,7 @@ MonoBehaviour:
   softClipNL: {fileID: 32900000, guid: eb80ab8b9f008224bae1e1dc2ec6fa15, type: 3}
   hardClipEN: {fileID: 32900000, guid: e4618944f7cf9e04eb3133c58b6d2208, type: 3}
   softClipEN: {fileID: 32900000, guid: 07aff70fe5176b7418222118c657ea5e, type: 3}
+  currentClip: {fileID: 0}
   videoPlayer: {fileID: 5020764234053736084}
   texture: {fileID: 0}
   infoPanel: {fileID: 5153677104035869452}

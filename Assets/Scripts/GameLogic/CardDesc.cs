@@ -11,6 +11,7 @@ public class CardDesc : MonoBehaviour
 {
     [SerializeField] private string cardName;
     [SerializeField] private TextMeshProUGUI cardText;
+    public CardTitle cardTitle;
     public GameObject softSideText;
     public GameObject hardSideText;
     public GameObject softSideDiamond;
@@ -163,4 +164,22 @@ public class CardDesc : MonoBehaviour
         cardController.CloseInfoText();
         infoPanel.SetActive(false);
     }
+}
+
+public enum CardTitle
+{
+    ACTIVE,
+    CREATE,
+    CURIOUS,
+    EMPATHY,
+    GROWTH,
+    HELPFUL,
+    PERSEVERE,
+    PLAYFUL,
+    PROGRESSIVE,
+    RIGHT,
+    SENSE,
+    SOCIAL,
+    SURPRISING,
+    WARM
 }
