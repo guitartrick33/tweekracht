@@ -52,6 +52,7 @@ public class CardController : MonoBehaviour
     public GameObject finalPanel;
 
     public GameObject suitabilityPanel;
+    public int suitCounter = 0;
 
     private void Awake()
     {
@@ -266,6 +267,7 @@ public class CardController : MonoBehaviour
         if (resultSoftSideTitle != String.Empty && resultHardSideTitle != String.Empty && !CheckSuitability(resultSoftSide, resultHardSide))
         {
             suitabilityPanel.SetActive(true);
+            suitabilityPanel.GetComponent<SuitabilityController>().SetSideButtons();
         }
         else
         {
@@ -300,11 +302,13 @@ public class CardController : MonoBehaviour
     {
         if (invalidCombinations.TryGetValue((resultSoft.cardTitle, resultHard.cardTitle), out bool invalid))
         {
+            suitCounter = 1;
             return false;
         }
 
         if (resultSoft.cardTitle == resultHard.cardTitle)
         {
+            suitCounter = 2;
             return false;
         }
         return true;
@@ -325,11 +329,20 @@ public class CardController : MonoBehaviour
         {(CardTitle.RIGHT, CardTitle.SENSE), false},
     };
     
-    IEnumerator ContinuePath() //Continues path after you have completed the first side (e.g. you chose soft first, reset the cards to display hard side only
+    public IEnumerator ContinuePath() //Continues path after you have completed the first side (e.g. you chose soft first, reset the cards to display hard side only
     {
-        resultPanel.GetComponentInChildren<Animator>().SetBool("SwipeOut", true);
+        if (resultPanel)
+        {
+            resultPanel.GetComponentInChildren<Animator>().SetBool("SwipeOut", true);
+        }
+
+        if (suitabilityPanel)
+        {
+            suitabilityPanel.GetComponentInChildren<Animator>().SetBool("SwipeOut", true);
+        }
         yield return new WaitForSeconds(1.5f);
         resultPanel.SetActive(false);
+        suitabilityPanel.SetActive(false);
         texture.Release();
         if (currentCard1 != null && currentCard2 != null)
         {

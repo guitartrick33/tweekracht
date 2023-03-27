@@ -914,22 +914,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6777365668951961480, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777365668951961480, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6573449543742842172}
-    - target: {fileID: 6777365668951961480, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdatePage
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777365668951961480, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FinalPageController, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 7757795898229171200, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1202,17 +1186,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6573449543742842172 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6108810995572956607, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
-  m_PrefabInstance: {fileID: 1152726565782468739}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7013592de8103a04c821a71b6bcaac29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6911386960822631205
