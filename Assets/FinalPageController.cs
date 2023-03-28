@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -23,10 +24,16 @@ public class FinalPageController : MonoBehaviour
     [SerializeField] private GameObject circleImages;
     [SerializeField] private GameObject saveButton;
 
-    public string finalResultName;
-    public string finalResultDesc;
-    public string balanceDesc;
-    public string matchDesc;
+    private static string finalResultName;
+    private static string finalResultDesc;
+    private static string finalResultDescDetails;
+    private static string balanceDesc;
+    private static string matchDesc;
+    public TextMeshProUGUI titleGUI;
+    public TextMeshProUGUI descGUI;
+    public TextMeshProUGUI detailedDescGUI;
+    public TextMeshProUGUI balanceGUI;
+    public TextMeshProUGUI matchGUI;
 
     public CardDesc cardDescSoftFinal;
     public CardDesc cardDescHardFinal;
@@ -46,6 +53,11 @@ public class FinalPageController : MonoBehaviour
         saveButton.SetActive(true);
         clipHard.SetActive(false);
         clipSoft.SetActive(false);
+        finalResultName = String.Empty;
+        finalResultDesc = String.Empty;
+        finalResultDescDetails = String.Empty;
+        balanceDesc = String.Empty;
+        matchDesc = String.Empty;
     }
 
     public void OpenPopUp()
@@ -72,30 +84,12 @@ public class FinalPageController : MonoBehaviour
         softSideTitleUI.text = cardDescSoftFinal.CardText();
         hardSideDescUI.text = cardDescHardFinal.description.text;
         hardSideTitleUI.text = cardDescHardFinal.CardText();
+        if (methodMap.TryGetValue((cardDescHardFinal.cardTitle, cardDescSoftFinal.cardTitle), out Action method))
+        {
+            method();
+            GetFinalResult();// Call the appropriate method
+        }
     }
-
-    // public void ClickVideoClip(bool isSoft)
-    // {
-    //     StartCoroutine(VideoCoroutine(isSoft));
-    //     
-    // }
-    //
-    // IEnumerator VideoCoroutine(bool isSoft)
-    // {
-    //     circleImages.SetActive(false);
-    //     saveButton.SetActive(false);
-    //     animController.SetBool("DropDownBool", true);
-    //     yield return new WaitForSeconds(1.5f);
-    //     if (isSoft)
-    //     {
-    //         SetClipSoft();
-    //     }
-    //     else
-    //     {
-    //         SetClipHard();
-    //     }
-    //
-    // }
 
     public void SetClipSoft()
     {
@@ -139,8 +133,149 @@ public class FinalPageController : MonoBehaviour
         clipHard.SetActive(false);
     }
 
-    public void OnEnable()
+
+    public void GetFinalResult()
     {
-        // UpdatePage();
+        titleGUI.text = finalResultName;
+        descGUI.text = finalResultDesc;
+        detailedDescGUI.text = finalResultDescDetails;
+        matchGUI.text = matchDesc;
+        balanceGUI.text = balanceDesc;
     }
+
+    private Dictionary<(CardTitle, CardTitle), Action> methodMap = new Dictionary<(CardTitle, CardTitle), Action>()
+    {
+        //INTUITIVE RESULTS
+        { (CardTitle.HELPFUL, CardTitle.CURIOUS), SetUpIntuitive },
+        { (CardTitle.CURIOUS, CardTitle.HELPFUL), SetUpIntuitive },
+        
+        { (CardTitle.HELPFUL, CardTitle.PLAYFUL), SetUpIntuitive },
+        { (CardTitle.PLAYFUL, CardTitle.HELPFUL), SetUpIntuitive },
+        
+        { (CardTitle.EMPATHY, CardTitle.CURIOUS), SetUpIntuitive },
+        { (CardTitle.CURIOUS, CardTitle.EMPATHY), SetUpIntuitive },
+        
+        { (CardTitle.EMPATHY, CardTitle.PLAYFUL), SetUpIntuitive },
+        { (CardTitle.PLAYFUL, CardTitle.EMPATHY), SetUpIntuitive },
+        
+        //SOCIAL CHANGER
+        { (CardTitle.HELPFUL, CardTitle.PROGRESSIVE), SetUpSocialChanger },
+        { (CardTitle.PROGRESSIVE, CardTitle.HELPFUL), SetUpSocialChanger },
+        
+        { (CardTitle.HELPFUL, CardTitle.PERSEVERE), SetUpSocialChanger },
+        { (CardTitle.PERSEVERE, CardTitle.HELPFUL), SetUpSocialChanger },
+        
+        { (CardTitle.EMPATHY, CardTitle.PROGRESSIVE), SetUpSocialChanger },
+        { (CardTitle.PROGRESSIVE, CardTitle.EMPATHY), SetUpSocialChanger },
+        
+        { (CardTitle.EMPATHY, CardTitle.PERSEVERE), SetUpSocialChanger },
+        { (CardTitle.PERSEVERE, CardTitle.EMPATHY), SetUpSocialChanger },
+        
+        //SOCIAL DOER
+        { (CardTitle.HELPFUL, CardTitle.SENSE), SetUpSocialDoer },
+        { (CardTitle.SENSE, CardTitle.HELPFUL), SetUpSocialDoer },
+        
+        { (CardTitle.HELPFUL, CardTitle.RIGHT), SetUpSocialDoer },
+        { (CardTitle.RIGHT, CardTitle.HELPFUL), SetUpSocialDoer },
+        
+        { (CardTitle.EMPATHY, CardTitle.SENSE), SetUpSocialDoer },
+        { (CardTitle.SENSE, CardTitle.EMPATHY), SetUpSocialDoer },
+        
+        { (CardTitle.EMPATHY, CardTitle.RIGHT), SetUpSocialDoer },
+        { (CardTitle.RIGHT, CardTitle.EMPATHY), SetUpSocialDoer },
+        
+        //PIONEER
+        { (CardTitle.CURIOUS, CardTitle.PROGRESSIVE), SetUpPioneer },
+        { (CardTitle.PROGRESSIVE, CardTitle.CURIOUS), SetUpPioneer },
+        
+        { (CardTitle.CURIOUS, CardTitle.PERSEVERE), SetUpPioneer },
+        { (CardTitle.PERSEVERE, CardTitle.CURIOUS), SetUpPioneer },
+        
+        { (CardTitle.PLAYFUL, CardTitle.PROGRESSIVE), SetUpPioneer },
+        { (CardTitle.PROGRESSIVE, CardTitle.PLAYFUL), SetUpPioneer },
+        
+        { (CardTitle.PLAYFUL, CardTitle.PERSEVERE), SetUpPioneer },
+        { (CardTitle.PERSEVERE, CardTitle.PLAYFUL), SetUpPioneer },
+        
+        //CREATOR
+        { (CardTitle.CURIOUS, CardTitle.SENSE), SetUpCreator },
+        { (CardTitle.SENSE, CardTitle.CURIOUS), SetUpCreator },
+        
+        { (CardTitle.CURIOUS, CardTitle.RIGHT), SetUpCreator },
+        { (CardTitle.RIGHT, CardTitle.CURIOUS), SetUpCreator },
+        
+        { (CardTitle.PLAYFUL, CardTitle.SENSE), SetUpCreator },
+        { (CardTitle.SENSE, CardTitle.PLAYFUL), SetUpCreator },
+        
+        { (CardTitle.PLAYFUL, CardTitle.RIGHT), SetUpCreator },
+        { (CardTitle.RIGHT, CardTitle.PLAYFUL), SetUpCreator },
+        
+        //BUILDER
+        { (CardTitle.PROGRESSIVE, CardTitle.SENSE), SetUpBuilder },
+        { (CardTitle.SENSE, CardTitle.PROGRESSIVE), SetUpBuilder },
+        
+        { (CardTitle.PROGRESSIVE, CardTitle.RIGHT), SetUpBuilder },
+        { (CardTitle.RIGHT, CardTitle.PROGRESSIVE), SetUpBuilder },
+        
+        { (CardTitle.PERSEVERE, CardTitle.SENSE), SetUpBuilder },
+        { (CardTitle.SENSE, CardTitle.PERSEVERE), SetUpBuilder },
+        
+        { (CardTitle.PERSEVERE, CardTitle.RIGHT), SetUpBuilder },
+        { (CardTitle.RIGHT, CardTitle.PERSEVERE), SetUpBuilder }
+    };
+
+    public static void SetUpIntuitive()
+    {
+        finalResultName = LocalizationManager.Localize("Results.IntuitiveTitle");
+        finalResultDesc = LocalizationManager.Localize("Results.IntuitiveDescSummary");
+        finalResultDescDetails = LocalizationManager.Localize("Results.IntuitiveDescDetailed");
+        balanceDesc = LocalizationManager.Localize("Results.IntuitiveBalanceDesc");
+        matchDesc = LocalizationManager.Localize("Results.IntuitiveMatchDesc");
+    }
+
+    public static void SetUpSocialChanger()
+    {
+        finalResultName = LocalizationManager.Localize("Results.SocialChangerTitle");
+        finalResultDesc = LocalizationManager.Localize("Results.SocialChangerDescSummary");
+        finalResultDescDetails = LocalizationManager.Localize("Results.SocialChangerDescDetailed");
+        balanceDesc = LocalizationManager.Localize("Results.SocialChangerBalanceDesc");
+        matchDesc = LocalizationManager.Localize("Results.SocialChangerMatchDesc");
+    }
+    
+    public static void SetUpSocialDoer()
+    {
+        finalResultName = LocalizationManager.Localize("Results.SocialDoerTitle");
+        finalResultDesc = LocalizationManager.Localize("Results.SocialDoerDescSummary");
+        finalResultDescDetails = LocalizationManager.Localize("Results.SocialDoerDescDetailed");
+        balanceDesc = LocalizationManager.Localize("Results.SocialDoerBalanceDesc");
+        matchDesc = LocalizationManager.Localize("Results.SocialDoerMatchDesc");
+    }
+    
+    public static void SetUpPioneer()
+    {
+        finalResultName = LocalizationManager.Localize("Results.PioneerTitle");
+        finalResultDesc = LocalizationManager.Localize("Results.PioneerDescSummary");
+        finalResultDescDetails = LocalizationManager.Localize("Results.PioneerDescDetailed");
+        balanceDesc = LocalizationManager.Localize("Results.PioneerBalanceDesc");
+        matchDesc = LocalizationManager.Localize("Results.PioneerMatchDesc");
+    }
+    
+    public static void SetUpCreator()
+    {
+        finalResultName = LocalizationManager.Localize("Results.CreatorTitle");
+        finalResultDesc = LocalizationManager.Localize("Results.CreatorDescSummary");
+        finalResultDescDetails = LocalizationManager.Localize("Results.CreatorDescDetailed");
+        balanceDesc = LocalizationManager.Localize("Results.CreatorBalanceDesc");
+        matchDesc = LocalizationManager.Localize("Results.CreatorMatchDesc");
+    }
+    
+    public static void SetUpBuilder()
+    {
+        finalResultName = LocalizationManager.Localize("Results.BuilderTitle");
+        finalResultDesc = LocalizationManager.Localize("Results.BuilderDescSummary");
+        finalResultDescDetails = LocalizationManager.Localize("Results.BuilderDescDetailed");
+        balanceDesc = LocalizationManager.Localize("Results.BuilderBalanceDesc");
+        matchDesc = LocalizationManager.Localize("Results.BuilderMatchDesc");
+    }
+    
 }

@@ -144,6 +144,7 @@ public class CardController : MonoBehaviour
 
     public void PickCard(GameObject card) //Pick a card event - picks a card and initiates animations
     {
+        //Setting up the video clip of the chosen card and playing it using the coroutine below
         if (interactive)
         {
             AudioManager.Instance.PlayButtonClick();
@@ -170,6 +171,7 @@ public class CardController : MonoBehaviour
 
     IEnumerator WaitBeforePlayingVideo(CardDesc cardDesc, GameObject card)
     {
+        //Serves as mediator between playing the video and the pop up animations
         yield return new WaitForSeconds(1);
         cardDesc.videoPlayer.Play();
         vp = cardDesc.videoPlayer;
@@ -181,7 +183,7 @@ public class CardController : MonoBehaviour
     IEnumerator RefreshCards(GameObject card) //Refreshes the cards after the video from PickCard is done
     {
         isPlayingVideo = false;
-        
+        //If card is not last, instantiate the next cards and destroy the previous ones
         if (!card.GetComponent<CardDesc>().isLast)
         {
             spawnCard1Location.GetComponent<Animator>().SetBool("SetToLarge", false);
@@ -221,12 +223,14 @@ public class CardController : MonoBehaviour
     
     private void MakeCardPickable(GameObject card) //Makes the instantiated cards buttons as they require the CardController script from the Game View object
     {
+        //Makes the card have button event 
         Button b = card.GetComponent<Button>();
         b.onClick.AddListener(delegate { PickCard(card); });
     }
 
     IEnumerator GetResult(GameObject card) //Result view opens up with the result of each side
     {
+        //Checks which card was the last picked and engages a swipe out animation
         if (ReferenceEquals(card, currentCard1))
         {
             spawnCard1Location.GetComponent<Animator>().SetBool("SwipeOutBool", true);
@@ -244,6 +248,7 @@ public class CardController : MonoBehaviour
         spawnCard1Location.SetActive(false);
         spawnCard2Location.SetActive(false);
         
+        //Here is where the final result (CardDesc + their "title") are set
         if (side == CardTypeEnum.SOFT && resultSoftSideTitle == String.Empty)
         {
             resultSoftSide = card.GetComponent<CardDesc>();
@@ -267,7 +272,14 @@ public class CardController : MonoBehaviour
         if (resultSoftSideTitle != String.Empty && resultHardSideTitle != String.Empty && !CheckSuitability(resultSoftSide, resultHardSide))
         {
             suitabilityPanel.SetActive(true);
-            suitabilityPanel.GetComponent<SuitabilityController>().SetSideButtons();
+            if (suitCounter == 1)
+            {
+                suitabilityPanel.GetComponent<SuitabilityController>().SetCardButtons();
+            }
+            else
+            {
+                suitabilityPanel.GetComponent<SuitabilityController>().SetSideButtons();
+            }
         }
         else
         {

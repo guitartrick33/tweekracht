@@ -33,7 +33,7 @@ public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private int _fastSwipeThresholdMaxLimit;
 
     private ScrollRect _scrollRectComponent;
-    private RectTransform _scrollRectRect;
+    [SerializeField] private RectTransform _scrollRectRect;
     private RectTransform _container;
 
     private bool _horizontal;
@@ -63,7 +63,7 @@ public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     //------------------------------------------------------------------------
     void Start() {
         _scrollRectComponent = GetComponent<ScrollRect>();
-        _scrollRectRect = GetComponent<RectTransform>();
+        // _scrollRectRect = GetComponent<RectTransform>();
         _container = _scrollRectComponent.content;
         _pageCount = _container.childCount;
 

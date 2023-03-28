@@ -242,6 +242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingViewType: 3
+--- !u!224 &475157068 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5043148523158741005, guid: ef4ce915472fbbf4cb39e5e5bcbb4005, type: 3}
+  m_PrefabInstance: {fileID: 6911386960822631205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &747743047
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +699,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 824629316082740718, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 798.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 824629316082740718, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1894.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 824629316082740718, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -510.06
+      objectReference: {fileID: 0}
     - target: {fileID: 1152726564665498774, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
       propertyPath: m_TargetCamera
       value: 
@@ -882,6 +899,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5290701303860911586, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5569913647698567349, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -898,6 +919,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5737325511420940687, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6489696354070311068, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -914,6 +939,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7100649556400979793, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344526803112677484, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719970645002415234, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1887.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719970645002415234, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.3951
+      objectReference: {fileID: 0}
     - target: {fileID: 7757795898229171200, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -929,6 +970,10 @@ PrefabInstance:
     - target: {fileID: 7757795898229171200, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687012036156595859, guid: 948c1ad6f87307e4abce99dbe6703b6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -1200,6 +1245,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1426538501}
+    - target: {fileID: 208492320759908528, guid: ef4ce915472fbbf4cb39e5e5bcbb4005, type: 3}
+      propertyPath: _scrollRectRect
+      value: 
+      objectReference: {fileID: 475157068}
     - target: {fileID: 306405764109268183, guid: ef4ce915472fbbf4cb39e5e5bcbb4005, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
