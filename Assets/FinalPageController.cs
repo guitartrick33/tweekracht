@@ -24,6 +24,7 @@ public class FinalPageController : MonoBehaviour
     [SerializeField] private GameObject circleImages;
     [SerializeField] private GameObject saveButton;
 
+    private static FinalResultEnum finalResultEnum;
     private static string finalResultName;
     private static string finalResultDesc;
     private static string finalResultDescDetails;
@@ -34,6 +35,14 @@ public class FinalPageController : MonoBehaviour
     public TextMeshProUGUI detailedDescGUI;
     public TextMeshProUGUI balanceGUI;
     public TextMeshProUGUI matchGUI;
+    public Sprite intuitiveCardSprite;
+    public Sprite socialChangerCardSprite;
+    public Sprite socialDoerCardSprite;
+    public Sprite pioneerCardSprite;
+    public Sprite creatorCardSprite;
+    public Sprite builderCardSprite;
+
+    public List<Image> cardBackgrounds;
 
     public CardDesc cardDescSoftFinal;
     public CardDesc cardDescHardFinal;
@@ -134,19 +143,58 @@ public class FinalPageController : MonoBehaviour
     }
 
 
-    public void GetFinalResult()
+    private void GetFinalResult()
     {
         titleGUI.text = finalResultName;
         descGUI.text = finalResultDesc;
         detailedDescGUI.text = finalResultDescDetails;
         matchGUI.text = matchDesc;
         balanceGUI.text = balanceDesc;
+        switch (finalResultEnum)
+        {
+            case FinalResultEnum.INTUITIVE:
+                foreach (Image i in cardBackgrounds)
+                {
+                    i.sprite = intuitiveCardSprite;
+                }
+                break;
+            case FinalResultEnum.CHANGER:
+                foreach (Image i in cardBackgrounds)
+                {
+                    i.sprite = socialChangerCardSprite;
+                }
+                break;
+            case FinalResultEnum.DOER:
+                foreach (Image i in cardBackgrounds)
+                {
+                    i.sprite = socialDoerCardSprite;
+                }
+                break;
+            case FinalResultEnum.PIONEER:
+                foreach (Image i in cardBackgrounds)
+                {
+                    i.sprite = pioneerCardSprite;
+                }
+                break;
+            case FinalResultEnum.CREATOR:
+                foreach (Image i in cardBackgrounds)
+                {
+                    i.sprite = creatorCardSprite;
+                }
+                break;
+            case FinalResultEnum.BUILDER:
+                foreach (Image i in cardBackgrounds)
+                {
+                    i.sprite = builderCardSprite;
+                }
+                break;
+        }
     }
 
     private Dictionary<(CardTitle, CardTitle), Action> methodMap = new Dictionary<(CardTitle, CardTitle), Action>()
     {
         //INTUITIVE RESULTS
-        { (CardTitle.HELPFUL, CardTitle.CURIOUS), SetUpIntuitive },
+        { (CardTitle.HELPFUL, CardTitle.CURIOUS), SetUpIntuitive},
         { (CardTitle.CURIOUS, CardTitle.HELPFUL), SetUpIntuitive },
         
         { (CardTitle.HELPFUL, CardTitle.PLAYFUL), SetUpIntuitive },
@@ -224,8 +272,9 @@ public class FinalPageController : MonoBehaviour
         { (CardTitle.RIGHT, CardTitle.PERSEVERE), SetUpBuilder }
     };
 
-    public static void SetUpIntuitive()
+    private static void SetUpIntuitive()
     {
+        finalResultEnum = FinalResultEnum.INTUITIVE;
         finalResultName = LocalizationManager.Localize("Results.IntuitiveTitle");
         finalResultDesc = LocalizationManager.Localize("Results.IntuitiveDescSummary");
         finalResultDescDetails = LocalizationManager.Localize("Results.IntuitiveDescDetailed");
@@ -233,8 +282,9 @@ public class FinalPageController : MonoBehaviour
         matchDesc = LocalizationManager.Localize("Results.IntuitiveMatchDesc");
     }
 
-    public static void SetUpSocialChanger()
+    private static void SetUpSocialChanger()
     {
+        finalResultEnum = FinalResultEnum.CHANGER;
         finalResultName = LocalizationManager.Localize("Results.SocialChangerTitle");
         finalResultDesc = LocalizationManager.Localize("Results.SocialChangerDescSummary");
         finalResultDescDetails = LocalizationManager.Localize("Results.SocialChangerDescDetailed");
@@ -242,8 +292,10 @@ public class FinalPageController : MonoBehaviour
         matchDesc = LocalizationManager.Localize("Results.SocialChangerMatchDesc");
     }
     
-    public static void SetUpSocialDoer()
+    
+    private static void SetUpSocialDoer()
     {
+        finalResultEnum = FinalResultEnum.DOER;
         finalResultName = LocalizationManager.Localize("Results.SocialDoerTitle");
         finalResultDesc = LocalizationManager.Localize("Results.SocialDoerDescSummary");
         finalResultDescDetails = LocalizationManager.Localize("Results.SocialDoerDescDetailed");
@@ -251,8 +303,9 @@ public class FinalPageController : MonoBehaviour
         matchDesc = LocalizationManager.Localize("Results.SocialDoerMatchDesc");
     }
     
-    public static void SetUpPioneer()
+    private static void SetUpPioneer()
     {
+        finalResultEnum = FinalResultEnum.PIONEER;
         finalResultName = LocalizationManager.Localize("Results.PioneerTitle");
         finalResultDesc = LocalizationManager.Localize("Results.PioneerDescSummary");
         finalResultDescDetails = LocalizationManager.Localize("Results.PioneerDescDetailed");
@@ -260,8 +313,9 @@ public class FinalPageController : MonoBehaviour
         matchDesc = LocalizationManager.Localize("Results.PioneerMatchDesc");
     }
     
-    public static void SetUpCreator()
+    private static void SetUpCreator()
     {
+        finalResultEnum = FinalResultEnum.CREATOR;
         finalResultName = LocalizationManager.Localize("Results.CreatorTitle");
         finalResultDesc = LocalizationManager.Localize("Results.CreatorDescSummary");
         finalResultDescDetails = LocalizationManager.Localize("Results.CreatorDescDetailed");
@@ -269,8 +323,9 @@ public class FinalPageController : MonoBehaviour
         matchDesc = LocalizationManager.Localize("Results.CreatorMatchDesc");
     }
     
-    public static void SetUpBuilder()
+    private static void SetUpBuilder()
     {
+        finalResultEnum = FinalResultEnum.BUILDER;
         finalResultName = LocalizationManager.Localize("Results.BuilderTitle");
         finalResultDesc = LocalizationManager.Localize("Results.BuilderDescSummary");
         finalResultDescDetails = LocalizationManager.Localize("Results.BuilderDescDetailed");
@@ -278,4 +333,14 @@ public class FinalPageController : MonoBehaviour
         matchDesc = LocalizationManager.Localize("Results.BuilderMatchDesc");
     }
     
+}
+
+public enum FinalResultEnum
+{
+    INTUITIVE,
+    CHANGER,
+    DOER,
+    PIONEER,
+    CREATOR,
+    BUILDER
 }

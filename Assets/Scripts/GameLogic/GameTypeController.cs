@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using TMPro;
 using UnityEngine;
 
@@ -37,12 +38,12 @@ public class GameTypeController : MonoBehaviour
                 todayText.SetActive(true);
                 break;
             case(GameType.FRIENDS):
-                currentFriendsText = friendsText.GetComponent<TextMeshProUGUI>().text;
-                currentFriendsText += $" {StartViewController.Instance.GetFriendsName().ToUpper()}?";
-                friendsText.GetComponent<TextMeshProUGUI>().text = currentFriendsText;
+                currentFriendsText = $" {StartViewController.Instance.GetFriendsName().ToUpper()}?";
+                friendsText.GetComponent<TextMeshProUGUI>().text = $"{LocalizationManager.Localize("Start.DTitle")}  {currentFriendsText}";
                 friendsText.SetActive(true);
                 break;
         }
+        Debug.Log(StartViewController.Instance.GetFriendsName());
     }
 }
 
