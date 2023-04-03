@@ -11,6 +11,7 @@ public class GameTypeController : MonoBehaviour
     [SerializeField] private GameObject energyText;
     [SerializeField] private GameObject todayText;
     [SerializeField] private GameObject friendsText;
+    public GameObject currentActiveTitle;
     private String currentFriendsText;
     public GameType gameType;
 
@@ -33,17 +34,19 @@ public class GameTypeController : MonoBehaviour
         {
             case (GameType.ENERGY):
                 energyText.SetActive(true);
+                currentActiveTitle = energyText;
                 break;
             case(GameType.TODAY):
                 todayText.SetActive(true);
+                currentActiveTitle = todayText;
                 break;
             case(GameType.FRIENDS):
                 currentFriendsText = $" {StartViewController.Instance.GetFriendsName().ToUpper()}?";
                 friendsText.GetComponent<TextMeshProUGUI>().text = $"{LocalizationManager.Localize("Start.DTitle")}  {currentFriendsText}";
                 friendsText.SetActive(true);
+                currentActiveTitle = friendsText;
                 break;
         }
-        Debug.Log(StartViewController.Instance.GetFriendsName());
     }
 }
 

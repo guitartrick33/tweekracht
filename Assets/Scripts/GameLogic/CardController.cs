@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using Assets.SimpleLocalization;
 using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -48,7 +50,15 @@ public class CardController : MonoBehaviour
     private bool isPlayingVideo;
     private bool isInfoPanelOpen;
     public VideoPlayer vp;
-
+    
+    public VideoPlayer switchSideVideoPlayer;
+    public VideoClip enSoftToHardSwitch;
+    public VideoClip enHardToSoftSwitch;
+    public VideoClip nlSoftToHardSwitch;
+    public VideoClip nlHardToSoftSwitch;
+    private VideoClip currentVideoClip;
+    private bool switchHasPlayedOnce;
+    
     public GameObject finalPanel;
 
     public GameObject suitabilityPanel;
@@ -77,6 +87,8 @@ public class CardController : MonoBehaviour
         
         mainCamera = Camera.main;
         vp = null;
+        currentVideoClip = switchSideVideoPlayer.clip;
+        switchHasPlayedOnce = false;
         ResetSidesCompletely();
     }
 
@@ -300,7 +312,7 @@ public class CardController : MonoBehaviour
     {
         if (resultHardSideTitle == String.Empty || resultSoftSideTitle == String.Empty)
         {
-            StartCoroutine(ContinuePath());
+            StartCoroutine(SwitchSidesVideoBreak());
         }
         else
         {
@@ -340,21 +352,61 @@ public class CardController : MonoBehaviour
         {(CardTitle.SENSE, CardTitle.RIGHT), false},
         {(CardTitle.RIGHT, CardTitle.SENSE), false},
     };
-    
-    public IEnumerator ContinuePath() //Continues path after you have completed the first side (e.g. you chose soft first, reset the cards to display hard side only
+
+    public IEnumerator SwitchSidesVideoBreak()
     {
+        GetComponent<GameTypeController>().currentActiveTitle.SetActive(false);
+        isPlayingVideo = true;
         if (resultPanel)
         {
             resultPanel.GetComponentInChildren<Animator>().SetBool("SwipeOut", true);
         }
-
         if (suitabilityPanel)
         {
             suitabilityPanel.GetComponentInChildren<Animator>().SetBool("SwipeOut", true);
         }
+
         yield return new WaitForSeconds(1.5f);
         resultPanel.SetActive(false);
         suitabilityPanel.SetActive(false);
+        switchSideVideoPlayer.gameObject.SetActive(true);
+        switch (LocalizationManager.Language)
+        {
+            case "Dutch":
+                if (side == CardTypeEnum.SOFT)
+                {
+                    switchSideVideoPlayer.clip = nlSoftToHardSwitch;
+                }
+                else if (side == CardTypeEnum.HARD)
+                {
+                    switchSideVideoPlayer.clip = nlHardToSoftSwitch;
+                }
+                break;
+            default:
+                if (side == CardTypeEnum.SOFT)
+                {
+                    switchSideVideoPlayer.clip = enSoftToHardSwitch;
+                }
+                else if (side == CardTypeEnum.HARD)
+                {
+                    switchSideVideoPlayer.clip = enHardToSoftSwitch;
+                }
+                break;
+        }
+
+        if (!AudioManager.Instance.isMusicOn)
+        {
+            switchSideVideoPlayer.SetDirectAudioMute(0, true); 
+        }
+        switchSideVideoPlayer.Play();
+        switchSideVideoPlayer.loopPointReached += (vp) => ContinuePath(); 
+    }
+    
+    public void ContinuePath() //Continues path after you have completed the first side (e.g. you chose soft first, reset the cards to display hard side only
+    {
+        switchSideVideoPlayer.gameObject.SetActive(false);
+        GetComponent<GameTypeController>().currentActiveTitle.SetActive(true);
+        isPlayingVideo = false;
         texture.Release();
         if (currentCard1 != null && currentCard2 != null)
         {
@@ -379,6 +431,8 @@ public class CardController : MonoBehaviour
     public void ResetSidesCompletely() //Method used to reset both sides
     {
         resultPanel.SetActive(false);
+        finalPanel.SetActive(false);
+        suitabilityPanel.SetActive(false);
         Destroy(currentCard1);
         Destroy(currentCard2);
         spawnCard1Location.SetActive(true);

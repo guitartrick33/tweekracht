@@ -7,7 +7,7 @@ public class SettingsController : MonoBehaviour
 {
     public GameObject settingsPanel;
 
-    private void Awake()
+    private void Start()
     {
         settingsPanel.SetActive(false);
     }

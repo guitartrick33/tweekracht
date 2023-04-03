@@ -604,7 +604,7 @@ MonoBehaviour:
   nextCard2: {fileID: 0}
   hardClipNL: {fileID: 32900000, guid: d56e79b396d0f844ab1ed8317bfc26d0, type: 3}
   softClipNL: {fileID: 32900000, guid: d677bbf880c7b244ab0dbb11d3ddac8b, type: 3}
-  hardClipEN: {fileID: 32900000, guid: 5a543b1882ba5ba4b9adbe13e040c8ae, type: 3}
+  hardClipEN: {fileID: 32900000, guid: 04efb60f5743a7846a5f789ad245898d, type: 3}
   softClipEN: {fileID: 32900000, guid: f9f0472f432810348bbf1ec07c237d16, type: 3}
   currentClip: {fileID: 0}
   videoPlayer: {fileID: 3860926059507302410}
