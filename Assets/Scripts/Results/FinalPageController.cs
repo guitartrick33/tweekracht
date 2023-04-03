@@ -201,10 +201,18 @@ public class FinalPageController : MonoBehaviour
     {
         saveSoftCardTitle = cardDescSoftFinal.cardTitle;
         saveHardCardTitle = cardDescHardFinal.cardTitle;
-        ResultClass result = new ResultClass(saveSoftCardTitle, saveHardCardTitle, saveFinalResultEnum);
-        saveLoadManager.results.Clear();
-        saveLoadManager.results.Add(result);
-        Debug.Log(saveLoadManager.results[0].hardCardTitle);
+        if (StartViewController.Instance.GameType() != GameType.FRIENDS)
+        {
+            ResultClass result = new ResultClass(saveSoftCardTitle, saveHardCardTitle, saveFinalResultEnum, StartViewController.Instance.GameType());
+            saveLoadManager.results.Clear();
+            saveLoadManager.results.Add(result);
+        }
+        else
+        {
+            ResultClass result = new ResultClass(saveSoftCardTitle, saveHardCardTitle, saveFinalResultEnum, StartViewController.Instance.GameType(), StartViewController.Instance.GetFriendsName());
+            saveLoadManager.results.Clear();
+            saveLoadManager.results.Add(result);
+        }
         saveLoadManager.SaveToJSON<ResultClass>(saveLoadManager.results, filename);
     }
     
