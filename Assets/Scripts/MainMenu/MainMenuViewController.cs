@@ -30,11 +30,9 @@ public class MainMenuViewController : MonoBehaviour
     private GameObject currentPage;
     [SerializeField] private ViewType viewTypeAfterStart;
     private bool isPhone;
-    [SerializeField] private IntroductionVideoController[] introductionVideoController;
 
     private void Awake()
     {
-        introductionVideoController = FindObjectsOfType<IntroductionVideoController>();
 
         if(DeviceDiagonalSizeInInches() > 6.5f && AspectRatio() < 2f)
         {
@@ -50,11 +48,6 @@ public class MainMenuViewController : MonoBehaviour
 
     private void Start()
     {
-        LocalizationController.Instance.CheckSystemLocalization();
-        foreach (IntroductionVideoController ivc in introductionVideoController)
-        {
-            ivc.SetLocalizationVids();
-        }
         dropDownLanguages.captionText.text = LocalizationManager.Language;
         currentPage = pages[0];
         foreach (GameObject page in pages)
@@ -105,10 +98,6 @@ public class MainMenuViewController : MonoBehaviour
     {
         LocalizationController.Instance.SetLocalization(dropDownLanguages.options[dropDownLanguages.value].text);
         GetFirstWord();
-        foreach (IntroductionVideoController ivc in introductionVideoController)
-        {
-            ivc.SetLocalizationVids();
-        }
     }
 
     public void GetFirstWord() //This method is used to color the first word in each button - design choice made by Tweekracht
@@ -122,7 +111,13 @@ public class MainMenuViewController : MonoBehaviour
                 if (!containsOnlyOneWord)
                 {
                     string[] words = s.Split(' ');
-                    string word = $"<color=#{letterColor.ToHexString()}>" + words[0] + $"</color=#{letterColor.ToHexString()}> " + $"<color=#{letterColorTest.ToHexString()}>" + words[1] + $"</color=#{letterColorTest.ToHexString()}>";
+                    string word = $"<color=#{letterColor.ToHexString()}>" + words[0] +
+                                  $"</color=#{letterColor.ToHexString()}>";
+                    for (int i = 1; i < words.Length; i++)
+                    {
+                        word += " " + $"<color=#{letterColorTest.ToHexString()}>" + words[i] +
+                                $"</color=#{letterColorTest.ToHexString()}>";
+                    }
                     tgui.text = word;
                 }
                 else

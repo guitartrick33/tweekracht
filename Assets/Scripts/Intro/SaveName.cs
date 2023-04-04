@@ -31,7 +31,7 @@ public class SaveName : MonoBehaviour
             titleText.text = "Hi, " + PlayerPrefs.GetString("myNameKey").ToUpper() + "!";
             inputField.gameObject.SetActive(false);
             skipButton.SetActive(true);
-            jokeTextMain.gameObject.SetActive(true);
+            // jokeTextMain.gameObject.SetActive(true);
             jokeText.gameObject.SetActive(true);
             jokeText.text =
                 LocalizationManager.Localize(localizationJokeKeys[Random.Range(0, localizationJokeKeys.Count)]);

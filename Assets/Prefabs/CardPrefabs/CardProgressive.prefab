@@ -1185,8 +1185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When you get the most energy from doing things that are thorough. From
-    making things that are well put together. Well completed or according to plan.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
   m_sharedMaterial: {fileID: -8956729380365076281, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
@@ -1733,7 +1732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9099593590721493519
 RectTransform:
   m_ObjectHideFlags: 0

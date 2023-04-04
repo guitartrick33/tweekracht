@@ -21,6 +21,7 @@ public class IntroductionVideoController : MonoBehaviour
     [SerializeField] private ViewType viewTypeAfterIntro;
     public Transform texts;
     public Transform titles;
+    public bool isFirstVid = false;
 
     private void Awake()
     {
@@ -51,48 +52,52 @@ public class IntroductionVideoController : MonoBehaviour
         videoClipIndex = 0;
         SetLocalizationVids();
         StartVideo();
-        
-        if (texts is not null)
-        {
-            foreach (Transform t in texts)
-            {
-                t.gameObject.SetActive(false);
-            } 
-        }
 
-        if (titles is not null)
+        if (!isFirstVid)
         {
-            foreach (Transform t in titles)
+            if (texts is not null)
             {
-                t.gameObject.SetActive(false);
-            } 
+                foreach (Transform t in texts)
+                {
+                    t.gameObject.SetActive(false);
+                } 
+            }
+
+            if (titles is not null)
+            {
+                foreach (Transform t in titles)
+                {
+                    t.gameObject.SetActive(false);
+                } 
+            }
         }
+       
     }
 
     private void OnEnable()
     {
         StartVideo();
-        SetLocalizationVids();
     }
 
 
     private void StartVideo()
     {
-        Debug.Log(videoClips[0].name);
+        //If it's the first video game object - check system language to set up the correct clip - have to be this way
+        //in order to load the correct clip
+        if (isFirstVid)
+        {
+            LocalizationController.Instance.CheckSystemLocalization();
+        }
+        SetLocalizationVids();
+        
         if (!AudioManager.Instance.isMusicOn)
         {
           videoPlayer.SetDirectAudioMute(0, true);  
         }
         videoPlayer.clip = videoClips[videoClipIndex];
         videoPlayer.Play();
-        if (videoClipIndex >= videoClips.Count - 1)
-        {
-            videoPlayer.loopPointReached += OpenPanel;
-        }
-        else
-        {
-            videoPlayer.loopPointReached += OpenPanel;
-        }
+        videoPlayer.loopPointReached += OpenPanel;
+
     }
 
     public void SkipVideo(VideoPlayer vp)
@@ -117,6 +122,7 @@ public class IntroductionVideoController : MonoBehaviour
         if (backgroundPanel != null)
         {
             backgroundPanel.SetActive(false);
+            
             foreach (Transform t in texts)
             {
                 t.gameObject.SetActive(false);

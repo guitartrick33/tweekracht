@@ -151,6 +151,7 @@ public class CardDesc : MonoBehaviour
 
     public void ShowTextDesc()
     {
+        AudioManager.Instance.PlayButtonClick();
         cardController.ShowInfoText(gameObject);
         infoPanel.SetActive(true);
         if (!isSoft)
@@ -161,6 +162,7 @@ public class CardDesc : MonoBehaviour
 
     public void CloseTextDesc()
     {
+        AudioManager.Instance.PlayButtonClick();
         cardController.CloseInfoText();
         infoPanel.SetActive(false);
     }

@@ -12,10 +12,22 @@ public class FinalPageController : MonoBehaviour
 {
     [SerializeField] private VideoPlayer playerSoft;
     [SerializeField] private VideoPlayer playerHard;
+    [SerializeField] private VideoPlayer playerBalance;
+    [SerializeField] private VideoPlayer playerMatching;
+    [SerializeField] private VideoClip clipBalanceEN;
+    [SerializeField] private VideoClip clipBalanceNL;
+    [SerializeField] private VideoClip clipMatchingEN;
+    [SerializeField] private VideoClip clipMatchingNL;
     [SerializeField] private RenderTexture texture;
 
     [SerializeField] private GameObject clipSoft;
     [SerializeField] private GameObject clipHard;
+    [SerializeField] private GameObject clipBalance;
+    [SerializeField] private GameObject clipMatching;
+    [SerializeField] private GameObject closeSoftClipButton;
+    [SerializeField] private GameObject closeHardClipButton;
+    [SerializeField] private GameObject closeBalanceClipButton;
+    [SerializeField] private GameObject closeMatchingClipButton;
     private VideoClip startClip;
     // [SerializeField] private Animator animController;
     
@@ -75,6 +87,8 @@ public class FinalPageController : MonoBehaviour
         saveButton.SetActive(true);
         clipHard.SetActive(false);
         clipSoft.SetActive(false);
+        closeSoftClipButton.SetActive(false);
+        closeHardClipButton.SetActive(false);
         finalResultName = String.Empty;
         finalResultDesc = String.Empty;
         finalResultDescDetails = String.Empty;
@@ -158,6 +172,7 @@ public class FinalPageController : MonoBehaviour
     public void SetClipSoft()
     {
         clipSoft.SetActive(true);
+        closeSoftClipButton.SetActive(true);
         mainScrollRect.enabled = false;
         playerSoft.clip = cardDescSoftFinal.currentClip;
         if (!AudioManager.Instance.isMusicOn)
@@ -168,17 +183,19 @@ public class FinalPageController : MonoBehaviour
         playerSoft.loopPointReached += (vp) => ResetClipSoft() ;
     }
 
-    private void ResetClipSoft()
+    public void ResetClipSoft()
     {
         mainScrollRect.enabled = true;
         playerSoft.Stop();
         texture.Release();
         clipSoft.SetActive(false);
+        closeSoftClipButton.SetActive(false);
     }
 
     public void SetClipHard()
     {
         clipHard.SetActive(true);
+        closeHardClipButton.SetActive(true);
         mainScrollRect.enabled = false;
         playerHard.clip = cardDescHardFinal.currentClip;
         if (!AudioManager.Instance.isMusicOn)
@@ -189,12 +206,75 @@ public class FinalPageController : MonoBehaviour
         playerHard.loopPointReached += (vp) => ResetClipHard() ;
     }
 
-    private void ResetClipHard()
+    public void ResetClipHard()
     {
+        closeHardClipButton.SetActive(false);
         mainScrollRect.enabled = true;
         playerHard.Stop();
         texture.Release();
         clipHard.SetActive(false);
+    }
+
+    public void SetClipBalance()
+    {
+        clipBalance.SetActive(true);
+        closeBalanceClipButton.SetActive(true);
+        mainScrollRect.enabled = false;
+        switch (LocalizationManager.Language)
+        {
+            case "Dutch":
+                playerBalance.clip = clipBalanceNL;
+                break;
+            case "English":
+                playerBalance.clip = clipBalanceEN;
+                break;
+        }
+        if (!AudioManager.Instance.isMusicOn)
+        {
+            playerBalance.SetDirectAudioMute(0, true);  
+        }
+        playerBalance.Play();
+        playerBalance.loopPointReached += (vp) => ResetClipBalance() ;
+    }
+
+    public void ResetClipBalance()
+    {
+        closeBalanceClipButton.SetActive(false);
+        mainScrollRect.enabled = true;
+        playerBalance.Stop();
+        texture.Release();
+        clipBalance.SetActive(false);
+    }
+    
+    public void SetClipMatching()
+    {
+        clipMatching.SetActive(true);
+        closeMatchingClipButton.SetActive(true);
+        mainScrollRect.enabled = false;
+        switch (LocalizationManager.Language)
+        {
+            case "Dutch":
+                playerMatching.clip = clipMatchingNL;
+                break;
+            case "English":
+                playerMatching.clip = clipMatchingEN;
+                break;
+        }
+        if (!AudioManager.Instance.isMusicOn)
+        {
+            playerMatching.SetDirectAudioMute(0, true);  
+        }
+        playerMatching.Play();
+        playerMatching.loopPointReached += (vp) => ResetClipMatching() ;
+    }
+
+    public void ResetClipMatching()
+    {
+        closeMatchingClipButton.SetActive(false);
+        mainScrollRect.enabled = true;
+        playerMatching.Stop();
+        texture.Release();
+        clipMatching.SetActive(false);
     }
 
     public void SaveResults()
@@ -359,7 +439,7 @@ public class FinalPageController : MonoBehaviour
     private static void SetUpSocialChanger(string shortDesc, string balanceDescLoc, string matchDescLoc)
     {
         finalResultEnum = FinalResultEnum.CHANGER;
-        finalResultName = LocalizationManager.Localize("Results.SocialChangerTitle");
+        finalResultName = LocalizationManager.Localize("Results.SocialChangerTitle").ToUpper();
         finalResultDesc = shortDesc;
         finalResultDescDetails = LocalizationManager.Localize("Results.SocialChangerDescDetailed");
         balanceDesc = balanceDescLoc;
@@ -370,7 +450,7 @@ public class FinalPageController : MonoBehaviour
     private static void SetUpSocialDoer(string shortDesc, string balanceDescLoc, string matchDescLoc)
     {
         finalResultEnum = FinalResultEnum.DOER;
-        finalResultName = LocalizationManager.Localize("Results.SocialDoerTitle");
+        finalResultName = LocalizationManager.Localize("Results.SocialDoerTitle").ToUpper();
         finalResultDesc = shortDesc;
         finalResultDescDetails = LocalizationManager.Localize("Results.SocialDoerDescDetailed");
         balanceDesc = balanceDescLoc;
@@ -380,7 +460,7 @@ public class FinalPageController : MonoBehaviour
     private static void SetUpPioneer(string shortDesc, string balanceDescLoc, string matchDescLoc)
     {
         finalResultEnum = FinalResultEnum.PIONEER;
-        finalResultName = LocalizationManager.Localize("Results.PioneerTitle");
+        finalResultName = LocalizationManager.Localize("Results.PioneerTitle").ToUpper();
         finalResultDesc = shortDesc;
         finalResultDescDetails = LocalizationManager.Localize("Results.PioneerDescDetailed");
         balanceDesc = balanceDescLoc;
@@ -390,7 +470,7 @@ public class FinalPageController : MonoBehaviour
     private static void SetUpCreator(string shortDesc, string balanceDescLoc, string matchDescLoc)
     {
         finalResultEnum = FinalResultEnum.CREATOR;
-        finalResultName = LocalizationManager.Localize("Results.CreatorTitle");
+        finalResultName = LocalizationManager.Localize("Results.CreatorTitle").ToUpper();
         finalResultDesc = shortDesc;
         finalResultDescDetails = LocalizationManager.Localize("Results.CreatorDescDetailed");
         balanceDesc = balanceDescLoc;
@@ -400,7 +480,7 @@ public class FinalPageController : MonoBehaviour
     private static void SetUpBuilder(string shortDesc, string balanceDescLoc, string matchDescLoc)
     {
         finalResultEnum = FinalResultEnum.BUILDER;
-        finalResultName = LocalizationManager.Localize("Results.ConstructorTitle");
+        finalResultName = LocalizationManager.Localize("Results.ConstructorTitle").ToUpper();
         finalResultDesc = shortDesc;
         finalResultDescDetails = LocalizationManager.Localize("Results.ConstructorDescDetailed");
         balanceDesc = balanceDescLoc;
