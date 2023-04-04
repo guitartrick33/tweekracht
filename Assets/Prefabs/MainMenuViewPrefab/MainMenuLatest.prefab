@@ -1770,7 +1770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 362}
+  m_AnchoredPosition: {x: 0, y: 327}
   m_SizeDelta: {x: 436.36, y: 31.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4328439040500076466
@@ -15150,7 +15150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -34}
+  m_AnchoredPosition: {x: 0, y: -61}
   m_SizeDelta: {x: 500, y: 665.7942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5243527454001364761
@@ -15181,14 +15181,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Finding your unique 2 CoreStrengths is a very special experience. The better
-    the CoreStrengths fit, the stronger the positive effect. For this reason we always
-    continue to investigate and consult until it really is right, for ANYONE. This
-    applies to all Personal CoreStrengths sessions we give. Whether it is a game
-    workshop, an individual card game session, a (large-scale) branding process or
-    an in-depth interview. From the people and organisations themselves, from what
-    they experience that works best and gives them the best energy and tools. Not
-    only for now, but also in the future.
+  m_text: 'Finding your unique Strengths is a very special experience. The better
+    they fit, the stronger the positive effect. For this reason we always continue
+    to investigate until it really feels good. This applies to all sessions we give.
+    Game workshops, individual card game sessions,  (large-scale) branding process
+    or in-depth interviews. Focussing on what works and what gives positive energy.
+    Not only for now, but also in the future. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
   m_sharedMaterial: {fileID: -8956729380365076281, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
@@ -15215,8 +15213,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29
-  m_fontSizeBase: 29
+  m_fontSize: 33
+  m_fontSizeBase: 33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -32,18 +32,24 @@ public class IntroductionVideoController : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void SetLocalizationVids()
     {
-        videoClipIndex = 0;
+        videoClips.Clear();
         switch (LocalizationManager.Language)
         {
-            case ("English"):
-                videoClips.AddRange(enClips);
-                break;
             case ("Dutch"):
                 videoClips.AddRange(nlClips);
                 break;
+            default:
+                videoClips.AddRange(enClips);
+                break;
         }
+    }
+
+    private void Start()
+    {
+        videoClipIndex = 0;
+        SetLocalizationVids();
         StartVideo();
         
         if (texts is not null)
@@ -66,11 +72,13 @@ public class IntroductionVideoController : MonoBehaviour
     private void OnEnable()
     {
         StartVideo();
+        SetLocalizationVids();
     }
 
 
     private void StartVideo()
     {
+        Debug.Log(videoClips[0].name);
         if (!AudioManager.Instance.isMusicOn)
         {
           videoPlayer.SetDirectAudioMute(0, true);  

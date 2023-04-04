@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Assets.SimpleLocalization;
 using TMPro;
 using Unity.VisualScripting;
@@ -29,9 +30,12 @@ public class MainMenuViewController : MonoBehaviour
     private GameObject currentPage;
     [SerializeField] private ViewType viewTypeAfterStart;
     private bool isPhone;
+    [SerializeField] private IntroductionVideoController[] introductionVideoController;
 
     private void Awake()
     {
+        introductionVideoController = FindObjectsOfType<IntroductionVideoController>();
+
         if(DeviceDiagonalSizeInInches() > 6.5f && AspectRatio() < 2f)
         {
             actualBackgroundImage.sprite = mainMenuBackgroundTablets;
@@ -47,8 +51,11 @@ public class MainMenuViewController : MonoBehaviour
     private void Start()
     {
         LocalizationController.Instance.CheckSystemLocalization();
+        foreach (IntroductionVideoController ivc in introductionVideoController)
+        {
+            ivc.SetLocalizationVids();
+        }
         dropDownLanguages.captionText.text = LocalizationManager.Language;
-        // Application.targetFrameRate = 60;
         currentPage = pages[0];
         foreach (GameObject page in pages)
         {
@@ -98,6 +105,10 @@ public class MainMenuViewController : MonoBehaviour
     {
         LocalizationController.Instance.SetLocalization(dropDownLanguages.options[dropDownLanguages.value].text);
         GetFirstWord();
+        foreach (IntroductionVideoController ivc in introductionVideoController)
+        {
+            ivc.SetLocalizationVids();
+        }
     }
 
     public void GetFirstWord() //This method is used to color the first word in each button - design choice made by Tweekracht
