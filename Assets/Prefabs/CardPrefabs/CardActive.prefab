@@ -474,13 +474,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Active and Building
   cardText: {fileID: 9110502846926378480}
-  cardTitle: 3
+  cardTitle: 0
   softSideText: {fileID: 3431150138233925873}
   hardSideText: {fileID: 1555097753532452816}
   softSideDiamond: {fileID: 4404185333133845239}
   hardSideDiamond: {fileID: 3234175310225994185}
   description: {fileID: 1738334088206855220}
-  isLast: 1
+  isLast: 0
   nextCard1: {fileID: 2309430056049265578, guid: 32ecd9e94975336448b923c18f71ba05, type: 3}
   nextCard2: {fileID: 2309430056049265578, guid: f137a7ab9cfa8dd40b14e0ef23f43bba, type: 3}
   hardClipNL: {fileID: 32900000, guid: d326365008427714dac4309c2cbcc392, type: 3}
