@@ -44,9 +44,9 @@ public class SettingsController : MonoBehaviour
 
     public void GoBackToMainMenu()
     {
-        CloseSettings();
         GetComponent<CardController>().ResetSidesCompletely();
         ViewManager.Instance.SwitchView(ViewType.MainMenu);
+        CloseSettings();
     }
 
     public void VisitTweekracht()

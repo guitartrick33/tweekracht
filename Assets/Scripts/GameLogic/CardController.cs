@@ -56,8 +56,7 @@ public class CardController : MonoBehaviour
     public VideoClip enHardToSoftSwitch;
     public VideoClip nlSoftToHardSwitch;
     public VideoClip nlHardToSoftSwitch;
-    private VideoClip currentVideoClip;
-    private bool switchHasPlayedOnce;
+    // private VideoClip currentVideoClip;
     
     public GameObject finalPanel;
 
@@ -87,8 +86,7 @@ public class CardController : MonoBehaviour
         
         mainCamera = Camera.main;
         vp = null;
-        currentVideoClip = switchSideVideoPlayer.clip;
-        switchHasPlayedOnce = false;
+        // currentVideoClip = switchSideVideoPlayer.clip;
         ResetSidesCompletely();
     }
 

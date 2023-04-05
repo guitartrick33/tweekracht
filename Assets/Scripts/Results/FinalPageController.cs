@@ -12,22 +12,12 @@ public class FinalPageController : MonoBehaviour
 {
     [SerializeField] private VideoPlayer playerSoft;
     [SerializeField] private VideoPlayer playerHard;
-    [SerializeField] private VideoPlayer playerBalance;
-    [SerializeField] private VideoPlayer playerMatching;
-    [SerializeField] private VideoClip clipBalanceEN;
-    [SerializeField] private VideoClip clipBalanceNL;
-    [SerializeField] private VideoClip clipMatchingEN;
-    [SerializeField] private VideoClip clipMatchingNL;
     [SerializeField] private RenderTexture texture;
 
     [SerializeField] private GameObject clipSoft;
     [SerializeField] private GameObject clipHard;
-    [SerializeField] private GameObject clipBalance;
-    [SerializeField] private GameObject clipMatching;
     [SerializeField] private GameObject closeSoftClipButton;
     [SerializeField] private GameObject closeHardClipButton;
-    [SerializeField] private GameObject closeBalanceClipButton;
-    [SerializeField] private GameObject closeMatchingClipButton;
     private VideoClip startClip;
     // [SerializeField] private Animator animController;
     
@@ -77,6 +67,7 @@ public class FinalPageController : MonoBehaviour
     private CardTitle saveSoftCardTitle;
     private CardTitle saveHardCardTitle;
     private FinalResultEnum saveFinalResultEnum;
+    public GameObject resultButton;
     
 
     private void Start()
@@ -104,6 +95,9 @@ public class FinalPageController : MonoBehaviour
         {
             t.gameObject.SetActive(false);
         }
+        
+        
+        resultButton.SetActive(false);
     }
 
     public void OpenPopUpDescription(GameObject text)
@@ -215,68 +209,6 @@ public class FinalPageController : MonoBehaviour
         clipHard.SetActive(false);
     }
 
-    public void SetClipBalance()
-    {
-        clipBalance.SetActive(true);
-        closeBalanceClipButton.SetActive(true);
-        mainScrollRect.enabled = false;
-        switch (LocalizationManager.Language)
-        {
-            case "Dutch":
-                playerBalance.clip = clipBalanceNL;
-                break;
-            case "English":
-                playerBalance.clip = clipBalanceEN;
-                break;
-        }
-        if (!AudioManager.Instance.isMusicOn)
-        {
-            playerBalance.SetDirectAudioMute(0, true);  
-        }
-        playerBalance.Play();
-        playerBalance.loopPointReached += (vp) => ResetClipBalance() ;
-    }
-
-    public void ResetClipBalance()
-    {
-        closeBalanceClipButton.SetActive(false);
-        mainScrollRect.enabled = true;
-        playerBalance.Stop();
-        texture.Release();
-        clipBalance.SetActive(false);
-    }
-    
-    public void SetClipMatching()
-    {
-        clipMatching.SetActive(true);
-        closeMatchingClipButton.SetActive(true);
-        mainScrollRect.enabled = false;
-        switch (LocalizationManager.Language)
-        {
-            case "Dutch":
-                playerMatching.clip = clipMatchingNL;
-                break;
-            case "English":
-                playerMatching.clip = clipMatchingEN;
-                break;
-        }
-        if (!AudioManager.Instance.isMusicOn)
-        {
-            playerMatching.SetDirectAudioMute(0, true);  
-        }
-        playerMatching.Play();
-        playerMatching.loopPointReached += (vp) => ResetClipMatching() ;
-    }
-
-    public void ResetClipMatching()
-    {
-        closeMatchingClipButton.SetActive(false);
-        mainScrollRect.enabled = true;
-        playerMatching.Stop();
-        texture.Release();
-        clipMatching.SetActive(false);
-    }
-
     public void SaveResults()
     {
         saveSoftCardTitle = cardDescSoftFinal.cardTitle;
@@ -294,6 +226,7 @@ public class FinalPageController : MonoBehaviour
             saveLoadManager.results.Add(result);
         }
         saveLoadManager.SaveToJSON<ResultClass>(saveLoadManager.results, filename);
+        saveButton.SetActive(false);
     }
     
     private void GetFinalResult()
@@ -343,6 +276,7 @@ public class FinalPageController : MonoBehaviour
                 }
                 break;
         }
+        SaveResults();
     }
 
     private Dictionary<(CardTitle, CardTitle), Action> methodMap = new Dictionary<(CardTitle, CardTitle), Action>()

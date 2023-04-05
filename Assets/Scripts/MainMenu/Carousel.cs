@@ -40,7 +40,7 @@ public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     
     // number of pages in container
     private int _pageCount;
-    private int _currentPage;
+    public int _currentPage;
 
     // whether lerping is in progress and target lerp position
     private bool _lerp;
