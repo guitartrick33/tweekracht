@@ -3,11 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 public class SaveLoadManager : MonoBehaviour
 {
     private static SaveLoadManager instance;
     public List<ResultClass> results;
+
+    public static SaveLoadManager Instance
+    {
+        get { return instance; }
+    }
+    private void Awake()
+    {
+        results = ReadFromJSON<ResultClass>("results.json");
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     public void SaveToJSON<T>(List<T> toSave, string filename)
     {
@@ -16,9 +34,16 @@ public class SaveLoadManager : MonoBehaviour
         WriteFile(GetPath(filename), content);
     }
 
-    public void ReadFromJSON()
+    public List<T>  ReadFromJSON<T>(string filename)
     {
-        
+        string content = ReadFile(GetPath(filename));
+        if (string.IsNullOrEmpty(content) || content == "{}")
+        {
+            return new List<T>();
+        }
+
+        List<T> res = JsonHelper.FromJson<T>(content).ToList();
+        return res;
     }
 
     private string GetPath(string filename)
@@ -36,8 +61,17 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
 
-    private string ReadFile()
+    private string ReadFile(string path)
     {
+        if (File.Exists(path))
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string content = reader.ReadToEnd();
+                return content;
+            }
+        }
+
         return "";
     }
 }

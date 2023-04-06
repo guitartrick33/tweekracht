@@ -83,16 +83,6 @@ public class CardDesc : MonoBehaviour
         //Checks for localization - needs to be changed if more languages are added
         switch (LocalizationManager.Language)
         {
-            case ("English"):
-                if (isSoft)
-                {
-                    currentClip = softClipEN;
-                }
-                else
-                {
-                    currentClip = hardClipEN;
-                }
-                break;
             case ("Dutch"):
                 if (isSoft)
                 {
@@ -101,6 +91,16 @@ public class CardDesc : MonoBehaviour
                 else
                 {
                     currentClip = hardClipNL;
+                }
+                break;
+            default:
+                if (isSoft)
+                {
+                    currentClip = softClipEN;
+                }
+                else
+                {
+                    currentClip = hardClipEN;
                 }
                 break;
         }

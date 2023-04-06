@@ -18,5 +18,6 @@ public enum PageType
     SETTINGS,
     PLAY,
     PROFILE,
-    MOREINFO
+    MOREINFO,
+    RESULTS
 }

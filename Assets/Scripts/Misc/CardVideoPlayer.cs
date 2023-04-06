@@ -41,7 +41,7 @@ public class CardVideoPlayer : MonoBehaviour
             case "Dutch":
                 clipPlayer.clip = clipNL;
                 break;
-            case "English":
+            default:
                 clipPlayer.clip = clipEN;
                 break;
         }

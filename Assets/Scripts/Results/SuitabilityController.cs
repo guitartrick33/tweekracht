@@ -13,11 +13,13 @@ public class SuitabilityController : MonoBehaviour
     [SerializeField] private GameObject card2Button;
     [SerializeField] private TextMeshProUGUI card1TMPro;
     [SerializeField] private TextMeshProUGUI card2TMPro;
+    [SerializeField] private TextMeshProUGUI title;
 
     public CardController cardController;
 
     public string localizationChooseCardKey;
     public string localizationChooseSideKey;
+    public string localizationTitle;
     public TextMeshProUGUI questionText;
 
     private CardDesc chosenCard;
@@ -29,6 +31,7 @@ public class SuitabilityController : MonoBehaviour
 
     public void SetCardButtons()
     {
+        title.text = LocalizationManager.Localize(localizationTitle).ToUpper();
         questionText.text = LocalizationManager.Localize(localizationChooseCardKey);
         hardSideButton.SetActive(false);
         softSideButton.SetActive(false);
@@ -39,6 +42,14 @@ public class SuitabilityController : MonoBehaviour
 
     public void SetSideButtons()
     {
+        if (chosenCard != null)
+        {
+            title.text = chosenCard.CardText();
+        }
+        else
+        {
+            title.text = cardController.resultHardSideTitle;
+        }
         questionText.text = LocalizationManager.Localize(localizationChooseSideKey);
         hardSideButton.SetActive(true);
         softSideButton.SetActive(true);

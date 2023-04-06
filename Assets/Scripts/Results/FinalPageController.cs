@@ -28,7 +28,6 @@ public class FinalPageController : MonoBehaviour
     [SerializeField] private Transform titles;
     private Vector3 textsStartPos;
     [SerializeField] private GameObject circleImages;
-    [SerializeField] private GameObject saveButton;
 
     private static FinalResultEnum finalResultEnum;
     private static string finalResultName;
@@ -67,7 +66,6 @@ public class FinalPageController : MonoBehaviour
     private CardTitle saveSoftCardTitle;
     private CardTitle saveHardCardTitle;
     private FinalResultEnum saveFinalResultEnum;
-    public GameObject resultButton;
     
 
     private void Start()
@@ -75,7 +73,6 @@ public class FinalPageController : MonoBehaviour
         popUpPanel.SetActive(false);
         mainScrollRect.enabled = true;
         circleImages.SetActive(true);
-        saveButton.SetActive(true);
         clipHard.SetActive(false);
         clipSoft.SetActive(false);
         closeSoftClipButton.SetActive(false);
@@ -95,9 +92,6 @@ public class FinalPageController : MonoBehaviour
         {
             t.gameObject.SetActive(false);
         }
-        
-        
-        resultButton.SetActive(false);
     }
 
     public void OpenPopUpDescription(GameObject text)
@@ -105,7 +99,6 @@ public class FinalPageController : MonoBehaviour
         popUpPanel.SetActive(true);
         mainScrollRect.enabled = false;
         circleImages.SetActive(false);
-        saveButton.SetActive(false);
         text.SetActive(true);
         Vector2 activeSize = text.GetComponent<RectTransform>().sizeDelta;
         popUpContainerRT.sizeDelta = new Vector2(popUpContainerRT.sizeDelta.x, activeSize.y);
@@ -135,7 +128,6 @@ public class FinalPageController : MonoBehaviour
         popUpPanel.SetActive(false);
         mainScrollRect.enabled = true;
         circleImages.SetActive(true);
-        saveButton.SetActive(true);
         texts.position = textsStartPos;
         foreach (Transform t in texts)
         {
@@ -215,18 +207,17 @@ public class FinalPageController : MonoBehaviour
         saveHardCardTitle = cardDescHardFinal.cardTitle;
         if (StartViewController.Instance.GameType() != GameType.FRIENDS)
         {
-            ResultClass result = new ResultClass(saveSoftCardTitle, saveHardCardTitle, saveFinalResultEnum, StartViewController.Instance.GameType());
-            saveLoadManager.results.Clear();
+            string date = DateTime.Now.ToString("dd/MM/yyyy");
+            ResultClass result = new ResultClass(date, saveSoftCardTitle, saveHardCardTitle, saveFinalResultEnum, StartViewController.Instance.GameType());
             saveLoadManager.results.Add(result);
         }
         else
         {
-            ResultClass result = new ResultClass(saveSoftCardTitle, saveHardCardTitle, saveFinalResultEnum, StartViewController.Instance.GameType(), StartViewController.Instance.GetFriendsName());
-            saveLoadManager.results.Clear();
+            string date = DateTime.Now.ToString("dd/MM/yyyy");
+            ResultClass result = new ResultClass(date, saveSoftCardTitle, saveHardCardTitle, saveFinalResultEnum, StartViewController.Instance.GameType(), StartViewController.Instance.GetFriendsName());
             saveLoadManager.results.Add(result);
         }
         saveLoadManager.SaveToJSON<ResultClass>(saveLoadManager.results, filename);
-        saveButton.SetActive(false);
     }
     
     private void GetFinalResult()

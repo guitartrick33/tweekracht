@@ -368,6 +368,7 @@ public class CardController : MonoBehaviour
         resultPanel.SetActive(false);
         suitabilityPanel.SetActive(false);
         switchSideVideoPlayer.gameObject.SetActive(true);
+        //NEEDS TO BE UPDATED WITH MORE VIDEOS IF ANOTHER LANGUAGE IS ADDED
         switch (LocalizationManager.Language)
         {
             case "Dutch":

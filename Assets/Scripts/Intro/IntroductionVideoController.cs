@@ -33,7 +33,7 @@ public class IntroductionVideoController : MonoBehaviour
         }
     }
 
-    public void SetLocalizationVids()
+    public void SetLocalizationVids() //NEEDS TO BE UPDATED IF MORE LANGUAGES ARE ADDED
     {
         videoClips.Clear();
         switch (LocalizationManager.Language)
