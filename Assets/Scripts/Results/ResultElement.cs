@@ -19,6 +19,7 @@ public class ResultElement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameTypeText;
     [SerializeField] private TextMeshProUGUI dateText;
     [SerializeField] private Image icon;
+    [SerializeField] private Image openCarouselIcon;
 
     [SerializeField] private List<TextMeshProUGUI> tguis;
 
@@ -91,6 +92,7 @@ public class ResultElement : MonoBehaviour
                     t.color = energyColor;
                 }
                 icon.color = energyColor;
+                openCarouselIcon.color = energyColor;
                 break;
             case GameType.TODAY:
                 foreach (TextMeshProUGUI t in tguis)
@@ -98,6 +100,7 @@ public class ResultElement : MonoBehaviour
                     t.color = todayColor;
                 }
                 icon.color = todayColor;
+                openCarouselIcon.color = todayColor;
                 break;
             case GameType.FRIENDS:
                 foreach (TextMeshProUGUI t in tguis)
@@ -105,6 +108,7 @@ public class ResultElement : MonoBehaviour
                     t.color = friendsColor;
                 }
                 icon.color = friendsColor;
+                openCarouselIcon.color = friendsColor;
                 break;
         }
     }
