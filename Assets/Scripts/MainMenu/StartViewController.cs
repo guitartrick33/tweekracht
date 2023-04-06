@@ -102,7 +102,7 @@ public class StartViewController : MonoBehaviour
     private void OnDisable()
     {
         CloseFriendNamePanel();
-        if (currentPanel is not null)
+        if (currentPanel != null)
         {
             ClosePopUpPanel(currentPanel);
         }

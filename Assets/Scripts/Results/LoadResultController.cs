@@ -31,6 +31,7 @@ public class LoadResultController : MonoBehaviour
             element.GetComponent<ResultElement>().friendsName = rc.friendName;
             element.GetComponent<ResultElement>().date = rc.date;
             element.GetComponent<ResultElement>().SetMainElementTexts();
+            element.GetComponent<ResultElement>().UpdatePage();
             nrOfItems++;
         }
 

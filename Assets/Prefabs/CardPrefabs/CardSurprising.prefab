@@ -446,6 +446,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 6990076912556096729}
   texture: {fileID: 0}
   infoPanel: {fileID: 5163498140624645295}
+  localizedTitle: {fileID: 4177836171714499062}
+  localizedDesc: {fileID: 7906038102961478092}
 --- !u!1 &3523629574933290496
 GameObject:
   m_ObjectHideFlags: 0

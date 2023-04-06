@@ -102,7 +102,6 @@ public class MainMenuViewController : MonoBehaviour
 
     public void GetFirstWord() //This method is used to color the first word in each button - design choice made by Tweekracht
     {
-        Debug.Log("LOL");
         foreach (TextMeshProUGUI tgui in textGuis)
         {
             if (tgui != null)

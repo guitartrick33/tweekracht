@@ -55,7 +55,7 @@ public class IntroductionVideoController : MonoBehaviour
 
         if (!isFirstVid)
         {
-            if (texts is not null)
+            if (texts != null)
             {
                 foreach (Transform t in texts)
                 {
@@ -63,7 +63,7 @@ public class IntroductionVideoController : MonoBehaviour
                 } 
             }
 
-            if (titles is not null)
+            if (titles != null)
             {
                 foreach (Transform t in titles)
                 {

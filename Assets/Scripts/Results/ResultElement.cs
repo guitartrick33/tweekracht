@@ -30,6 +30,13 @@ public class ResultElement : MonoBehaviour
     public Color todayColor;
     public Color friendsColor;
 
+    public CardDesc softCardDesc;
+    public CardDesc hardCardDesc;
+    public string softCardTitle;
+    public string softCardDescription;
+    public string hardCardTitle;
+    public string hardCardDescription;
+
     public void SetMainElementTexts()
     {
         switch (finalResult)
@@ -100,5 +107,25 @@ public class ResultElement : MonoBehaviour
                 icon.color = friendsColor;
                 break;
         }
+    }
+
+    public void UpdatePage()
+    {
+        foreach (CardDesc cardDesc in SaveLoadManager.Instance.cardPrefabs)
+        {
+            if (cardDesc.cardTitle == softSide)
+            {
+                softCardDesc = cardDesc;
+            }
+            else if (cardDesc.cardTitle == hardSide)
+            {
+                hardCardDesc = cardDesc;
+            }
+        }
+
+        softCardTitle = LocalizationManager.Localize(softCardDesc.localizedTitle.LocalizationKey);
+        softCardDescription = LocalizationManager.Localize(softCardDesc.localizedDesc.LocalizationKey);
+        hardCardTitle = LocalizationManager.Localize(hardCardDesc.localizedTitle.LocalizationKey);
+        hardCardDescription = LocalizationManager.Localize(hardCardDesc.localizedDesc.LocalizationKey);
     }
 }

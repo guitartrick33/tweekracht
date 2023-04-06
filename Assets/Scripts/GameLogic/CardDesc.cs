@@ -41,6 +41,9 @@ public class CardDesc : MonoBehaviour
     public GameObject infoPanel;
     private bool isSoft;
     
+    //THIS IS FOR THE LOADING, IN THE MY RESULTS PAGE, NEEDS BETTER IMPLEMENTATION
+    public LocalizedText localizedTitle;
+    public LocalizedText localizedDesc;
 
     private void Update()
     {

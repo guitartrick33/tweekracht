@@ -9,6 +9,8 @@ public class SaveLoadManager : MonoBehaviour
 {
     private static SaveLoadManager instance;
     public List<ResultClass> results;
+    //THIS NEEDS TO BE ANOTHER CLASS OR A BETTER SOLUTION
+    public List<CardDesc> cardPrefabs;
 
     public static SaveLoadManager Instance
     {
