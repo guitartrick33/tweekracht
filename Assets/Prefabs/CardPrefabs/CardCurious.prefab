@@ -944,8 +944,8 @@ MonoBehaviour:
   nextCard2: {fileID: 0}
   hardClipNL: {fileID: 32900000, guid: 6640b8c9b8a5f3b44b09ff611872573a, type: 3}
   softClipNL: {fileID: 32900000, guid: f4650835961641c46a2e8cf01f7491d5, type: 3}
-  hardClipEN: {fileID: 32900000, guid: a9d62ad64538aaf4f97cdf0a389adcb8, type: 3}
-  softClipEN: {fileID: 32900000, guid: 5283df59984b0ac45a47663d58c81836, type: 3}
+  hardClipEN: {fileID: 32900000, guid: 82ec73b3891297f4f81107add0f5faeb, type: 3}
+  softClipEN: {fileID: 32900000, guid: b25ef089230f98a4e8df361c0cedd51b, type: 3}
   currentClip: {fileID: 0}
   videoPlayer: {fileID: 8938789586910695893}
   texture: {fileID: 0}
@@ -1420,7 +1420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: 0, y: -61}
   m_SizeDelta: {x: 209.8971, y: 207.6968}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3833837698990553088
@@ -1454,8 +1454,8 @@ MonoBehaviour:
   m_text: When you get the most energy from doing things that are thorough. From
     making things that are well put together. Well completed or according to plan.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
-  m_sharedMaterial: {fileID: -8956729380365076281, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a89657160f02ebf4d902def98a64211f, type: 2}
+  m_sharedMaterial: {fileID: -7630407681557226491, guid: a89657160f02ebf4d902def98a64211f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

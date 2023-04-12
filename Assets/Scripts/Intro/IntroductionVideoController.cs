@@ -14,6 +14,7 @@ public class IntroductionVideoController : MonoBehaviour
     public int videoClipIndex;
     public List<VideoClip> nlClips;
     public List<VideoClip> enClips;
+    public Image progressBar;
 
     [SerializeField] private GameObject backgroundPanel;
     
@@ -31,6 +32,13 @@ public class IntroductionVideoController : MonoBehaviour
         {
             backgroundPanel.SetActive(false);
         }
+
+        progressBar.fillAmount = 0;
+    }
+
+    private void Update()
+    {
+        progressBar.fillAmount = (float)videoPlayer.time / (float)videoPlayer.clip.length;
     }
 
     public void SetLocalizationVids() //NEEDS TO BE UPDATED IF MORE LANGUAGES ARE ADDED

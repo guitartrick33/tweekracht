@@ -65,6 +65,7 @@ public class CardController : MonoBehaviour
 
     private void Awake()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         card1Names = new List<string>();
         card2Names = new List<string>();
         

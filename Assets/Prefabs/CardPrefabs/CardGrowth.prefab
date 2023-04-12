@@ -395,8 +395,8 @@ MonoBehaviour:
   nextCard2: {fileID: 2309430056049265578, guid: e2eee57a409b45d4f9e93fc81a4b35b2, type: 3}
   hardClipNL: {fileID: 32900000, guid: 1e06560ce6280fb4687cb59b23a17b45, type: 3}
   softClipNL: {fileID: 32900000, guid: 97fbc8a30db76c74eaf5060e501ccf17, type: 3}
-  hardClipEN: {fileID: 32900000, guid: 9397e96b07406bc4cb32303fed2b0180, type: 3}
-  softClipEN: {fileID: 32900000, guid: c10b8802bbc3a65459153d01274d2e8a, type: 3}
+  hardClipEN: {fileID: 32900000, guid: 63a7e75e346654e4f93ca49d067f805e, type: 3}
+  softClipEN: {fileID: 32900000, guid: 5e34279b012dcba419a8f47914aa6dd1, type: 3}
   currentClip: {fileID: 0}
   videoPlayer: {fileID: 6684746121358460873}
   texture: {fileID: 0}
@@ -662,7 +662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: 0, y: -63}
   m_SizeDelta: {x: 209.8971, y: 207.6968}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8462249927715078934
@@ -696,8 +696,8 @@ MonoBehaviour:
   m_text: When you get the most energy from doing things that are thorough. From
     making things that are well put together. Well completed or according to plan.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
-  m_sharedMaterial: {fileID: -8956729380365076281, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a89657160f02ebf4d902def98a64211f, type: 2}
+  m_sharedMaterial: {fileID: -7630407681557226491, guid: a89657160f02ebf4d902def98a64211f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

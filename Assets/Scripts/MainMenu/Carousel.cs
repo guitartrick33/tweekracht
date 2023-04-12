@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(Mask))]
@@ -29,6 +30,7 @@ public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     [Tooltip("Container with page images (optional)")]
     public Transform pageSelectionIcons;
 
+
     // fast swipes should be fast and short. If too long, then it is not fast swipe
     private int _fastSwipeThresholdMaxLimit;
 
@@ -39,7 +41,7 @@ public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private bool _horizontal;
     
     // number of pages in container
-    private int _pageCount;
+    public int _pageCount;
     public int _currentPage;
 
     // whether lerping is in progress and target lerp position
@@ -59,9 +61,12 @@ public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private int _previousPageSelectionIndex;
     // container with Image components - one Image for each page
     private List<Image> _pageSelectionImages;
+    
+    
 
     //------------------------------------------------------------------------
-    void Start() {
+    void Start()
+    {
         _scrollRectComponent = GetComponent<ScrollRect>();
         // _scrollRectRect = GetComponent<RectTransform>();
         _container = _scrollRectComponent.content;

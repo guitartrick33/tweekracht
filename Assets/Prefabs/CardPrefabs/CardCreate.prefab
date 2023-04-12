@@ -964,8 +964,8 @@ MonoBehaviour:
   nextCard2: {fileID: 2309430056049265578, guid: 9e715551f6899ff49ad551f52ea5ca54, type: 3}
   hardClipNL: {fileID: 32900000, guid: 8dd2e6cdcab1306449ffee5d34e6ef2c, type: 3}
   softClipNL: {fileID: 32900000, guid: 5d975b7cd58ed094db087b825751daac, type: 3}
-  hardClipEN: {fileID: 32900000, guid: 33e28f21defd72040ae0ae33e3c2a61c, type: 3}
-  softClipEN: {fileID: 32900000, guid: 136348d692287124db7185c044785fdb, type: 3}
+  hardClipEN: {fileID: 32900000, guid: 1d70da3483fc9ca49893eda56c215484, type: 3}
+  softClipEN: {fileID: 32900000, guid: 4e3a068038ce5d74fb88b6467fa54594, type: 3}
   currentClip: {fileID: 0}
   videoPlayer: {fileID: 5385378489522108299}
   texture: {fileID: 0}
@@ -1744,8 +1744,8 @@ MonoBehaviour:
   m_text: When you get the most energy from doing things that are thorough. From
     making things that are well put together. Well completed or according to plan.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
-  m_sharedMaterial: {fileID: -8956729380365076281, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a89657160f02ebf4d902def98a64211f, type: 2}
+  m_sharedMaterial: {fileID: -7630407681557226491, guid: a89657160f02ebf4d902def98a64211f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1776,7 +1776,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
