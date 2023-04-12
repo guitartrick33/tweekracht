@@ -466,8 +466,8 @@ MonoBehaviour:
   isLast: 1
   nextCard1: {fileID: 0}
   nextCard2: {fileID: 0}
-  hardClipNL: {fileID: 32900000, guid: 37e458bff73684045ac9a7a294fd41e9, type: 3}
-  softClipNL: {fileID: 32900000, guid: a9c68354ed57b774ba215271405fd1f1, type: 3}
+  hardClipNL: {fileID: 32900000, guid: 9cbdd845a51f2444daa38b148c3a37b4, type: 3}
+  softClipNL: {fileID: 32900000, guid: d2039b4b30068a64d853eb2ec6c22216, type: 3}
   hardClipEN: {fileID: 32900000, guid: 8e4f6f0f865d3f547a0c65974895b263, type: 3}
   softClipEN: {fileID: 32900000, guid: a8a1773f09c57ab4d8aa4cd1226fd45d, type: 3}
   currentClip: {fileID: 0}

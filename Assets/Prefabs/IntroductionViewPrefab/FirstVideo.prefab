@@ -304,7 +304,7 @@ MonoBehaviour:
   videoClips: []
   videoClipIndex: 0
   nlClips:
-  - {fileID: 32900000, guid: f594599402fb7af439360c3d4b7b3b71, type: 3}
+  - {fileID: 32900000, guid: 8249345bdcd66994ab4d5108e9ca280a, type: 3}
   enClips:
   - {fileID: 32900000, guid: 02a6d51258beb8f4c8e5c2ac3c3d8b0a, type: 3}
   progressBar: {fileID: 7513743084771723985}
@@ -1656,7 +1656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3358841070460645706
 RectTransform:
   m_ObjectHideFlags: 0

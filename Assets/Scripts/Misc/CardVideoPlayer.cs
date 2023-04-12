@@ -33,6 +33,7 @@ public class CardVideoPlayer : MonoBehaviour
     public void SetClip()
     {
         clipRawImage.SetActive(true);
+        clipRawImage.GetComponent<RawImage>().raycastTarget = true;
         closeClipButton.SetActive(true);
         mainScrollRect.enabled = false;
         button.SetActive(false);
@@ -61,6 +62,7 @@ public class CardVideoPlayer : MonoBehaviour
         mainScrollRect.enabled = true;
         clipPlayer.Stop();
         texture.Release();
+        clipRawImage.GetComponent<RawImage>().raycastTarget = false;
         clipRawImage.SetActive(false);
         button.SetActive(true);
     }

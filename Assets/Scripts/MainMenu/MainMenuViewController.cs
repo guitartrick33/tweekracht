@@ -10,9 +10,6 @@ public class MainMenuViewController : MonoBehaviour
 {
         
     [SerializeField] private TMP_Dropdown dropDownLanguages;
-    public List<TextMeshProUGUI> textGuis;
-    public Color letterColor;
-    public Color letterColorTest;
     [SerializeField] private Sprite mainMenuBackgroundPhones;
     [SerializeField] private Sprite mainMenuBackgroundTablets;
     [Space]
@@ -55,7 +52,6 @@ public class MainMenuViewController : MonoBehaviour
             page.SetActive(false);
         }
         currentPage.SetActive(true);
-        GetFirstWord();
     }
 
     public void RedirectToWebsite() //Redirects the user upon touching it to Tweekracht's webpage
@@ -97,39 +93,8 @@ public class MainMenuViewController : MonoBehaviour
     public void SetLocalization() //Usage of this method can be seen for the OnValueChanged event in the language dropdown component
     {
         LocalizationController.Instance.SetLocalization(dropDownLanguages.options[dropDownLanguages.value].text);
-        GetFirstWord();
     }
 
-    public void GetFirstWord() //This method is used to color the first word in each button - design choice made by Tweekracht
-    {
-        foreach (TextMeshProUGUI tgui in textGuis)
-        {
-            if (tgui != null)
-            {
-                var s = tgui.text;
-                bool containsOnlyOneWord = s.Split().Length == 1;
-                if (!containsOnlyOneWord)
-                {
-                    string[] words = s.Split(' ');
-                    string word = $"<color=#{letterColor.ToHexString()}>" + words[0] +
-                                  $"</color=#{letterColor.ToHexString()}>";
-                    for (int i = 1; i < words.Length; i++)
-                    {
-                        word += " " + $"<color=#{letterColorTest.ToHexString()}>" + words[i] +
-                                $"</color=#{letterColorTest.ToHexString()}>";
-                    }
-                    tgui.text = word;
-                }
-                else
-                {
-                    string word = $"<color=#{letterColor.ToHexString()}>" + tgui.text +
-                                  $"</color=#{letterColor.ToHexString()}> ";
-                    tgui.text = word;
-                }
-            }
-        }
-    }
-    
     public static float DeviceDiagonalSizeInInches() //Returns the initial size of the screen of the current device
     {
         float screenWidth = Screen.width / Screen.dpi;

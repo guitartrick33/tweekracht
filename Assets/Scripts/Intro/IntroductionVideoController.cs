@@ -33,12 +33,12 @@ public class IntroductionVideoController : MonoBehaviour
             backgroundPanel.SetActive(false);
         }
 
-        progressBar.fillAmount = 0;
+        // progressBar.fillAmount = 0;
     }
 
     private void Update()
     {
-        progressBar.fillAmount = (float)videoPlayer.time / (float)videoPlayer.clip.length;
+        // progressBar.fillAmount = (float)videoPlayer.time / (float)videoPlayer.clip.length;
     }
 
     public void SetLocalizationVids() //NEEDS TO BE UPDATED IF MORE LANGUAGES ARE ADDED

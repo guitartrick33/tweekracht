@@ -426,10 +426,10 @@ MonoBehaviour:
   videoClips: []
   videoClipIndex: 0
   nlClips:
-  - {fileID: 32900000, guid: d56f89542913c5840b5020fdf8b4330a, type: 3}
-  - {fileID: 32900000, guid: d40d82a7981873c479d5a1df08c15cee, type: 3}
-  - {fileID: 32900000, guid: cfd8149ffdcccb14abb0e98cbdb2ec31, type: 3}
-  - {fileID: 32900000, guid: 209e3c57709724446af25d91b9983b5a, type: 3}
+  - {fileID: 32900000, guid: bf31c8d2de0b4b541a634a8d1d552da9, type: 3}
+  - {fileID: 32900000, guid: 4a4c03af56020754db7aaa0c180bc485, type: 3}
+  - {fileID: 32900000, guid: 89c82ad7d451e844aa91811cbba2fba7, type: 3}
+  - {fileID: 32900000, guid: feea2d49cf5fa2a40a964816776e45c1, type: 3}
   enClips:
   - {fileID: 32900000, guid: b110e6a2ca29e7c498b0c97c5bb9e842, type: 3}
   - {fileID: 32900000, guid: 2419337fdbd11384bbc3cf1cfd05feac, type: 3}
@@ -744,7 +744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &782128549393556351
 RectTransform:
   m_ObjectHideFlags: 0
