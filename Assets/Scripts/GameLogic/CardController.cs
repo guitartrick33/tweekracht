@@ -65,7 +65,6 @@ public class CardController : MonoBehaviour
 
     private void Awake()
     {
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         card1Names = new List<string>();
         card2Names = new List<string>();
         
@@ -150,7 +149,6 @@ public class CardController : MonoBehaviour
 
         currentCard1 = card1;
         currentCard2 = card2;
-                
     }
 
     public void PickCard(GameObject card) //Pick a card event - picks a card and initiates animations
@@ -447,6 +445,7 @@ public class CardController : MonoBehaviour
         isPlayingVideo = false;
         isInfoPanelOpen = false;
         interactive = false;
+        finalPanel.GetComponent<FinalPageController>().ResetResults();
     }
 
     private void CheckBackground(GameObject card) //Based on the current side, check the sprite of a specific card

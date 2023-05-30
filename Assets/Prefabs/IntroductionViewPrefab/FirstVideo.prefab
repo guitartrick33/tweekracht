@@ -1242,7 +1242,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Do you think about me when you're logged out? ;)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a89657160f02ebf4d902def98a64211f, type: 2}
   m_sharedMaterial: {fileID: -8956729380365076281, guid: 23ea179aef8b67a4b8d77bd861d3b9eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

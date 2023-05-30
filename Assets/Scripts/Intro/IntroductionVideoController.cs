@@ -26,6 +26,7 @@ public class IntroductionVideoController : MonoBehaviour
 
     private void Awake()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         videoClips = new List<VideoClip>();
         videoPlayer = GetComponent<VideoPlayer>();
         if (backgroundPanel != null)

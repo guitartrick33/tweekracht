@@ -13,7 +13,6 @@ public class ColorButtonWords : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("lol");
         ColorWords();
     }
 

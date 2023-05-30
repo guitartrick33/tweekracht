@@ -94,6 +94,17 @@ public class FinalPageController : MonoBehaviour
         }
     }
 
+    public void ResetResults()
+    {
+        finalResultName = String.Empty;
+        finalResultDesc = String.Empty;
+        finalResultDescDetails = String.Empty;
+        balanceDesc = String.Empty;
+        matchDesc = String.Empty;
+        cardDescHardFinal = new CardDesc();
+        cardDescSoftFinal = new CardDesc();
+    }
+
     public void OpenPopUpDescription(GameObject text)
     {
         popUpPanel.SetActive(true);
