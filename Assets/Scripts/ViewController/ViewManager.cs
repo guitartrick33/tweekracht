@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +9,8 @@ public enum ViewType
     Introduction,
     Game,
     Video,
-    EndResults
+    EndResults,
+    SidesGame
 }
 
 public class ViewManager : MonoBehaviour
@@ -37,7 +39,10 @@ public class ViewManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    private void Start()
+    {
         viewControllerList = GetComponentsInChildren<ViewController>().ToList();
         viewControllerList.ForEach(x => x.gameObject.SetActive(false));
         SwitchView(openingViewType); //You can set the opening view here

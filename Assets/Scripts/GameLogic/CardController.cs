@@ -41,6 +41,7 @@ public class CardController : MonoBehaviour
     public GameObject resultCard;
     public string resultSoftSideTitle;
     public string resultHardSideTitle;
+    public bool hasChosenASide;
 
     public RenderTexture texture;
 
@@ -69,7 +70,8 @@ public class CardController : MonoBehaviour
         card2Names = new List<string>();
         
         side = CardTypeEnum.NONE;
-
+        hasChosenASide = false;    
+        
         resultSoftSide = null;
         resultHardSide = null;
         resultPanel.SetActive(false);
@@ -94,6 +96,11 @@ public class CardController : MonoBehaviour
     {
         titlePickSide.SetActive(true);
         GetComponent<GameTypeController>().DisableTexts();
+        if (side != CardTypeEnum.NONE)
+        {
+            StartCoroutine(Spawn());
+            GetComponent<GameTypeController>().EnableText();
+        }
     }
 
     private void Update()
@@ -130,7 +137,16 @@ public class CardController : MonoBehaviour
     
     IEnumerator  Spawn() //Spawn the default 2 cards after selecting the first side
     {
-        yield return new WaitForSeconds(1.4f);
+        if (!hasChosenASide)
+        {
+            yield return new WaitForSeconds(1.3f);
+            Debug.Log("Ayo what is this");
+        }
+        else
+        {
+            yield return new WaitForSeconds(0f);
+            Debug.Log("Gabriel steals!!!");
+        }
         titlePickSide.SetActive(false);
         
         GetComponent<GameTypeController>().EnableText();
@@ -441,7 +457,8 @@ public class CardController : MonoBehaviour
         resultHardSide = null;
         resultSoftSideTitle = String.Empty;
         resultHardSideTitle = String.Empty;
-        side = CardTypeEnum.NONE;
+        // side = CardTypeEnum.NONE;
+        hasChosenASide = false;
         isPlayingVideo = false;
         isInfoPanelOpen = false;
         interactive = false;
