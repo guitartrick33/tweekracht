@@ -14,6 +14,7 @@ public class IntroductionPanelController : MonoBehaviour
     public List<VideoClip> nlClips;
     public List<VideoClip> enClips;
     private GameObject currentPanel;
+    private bool hasPlayedIntroVid;
 
     private void Awake()
     {
@@ -32,16 +33,32 @@ public class IntroductionPanelController : MonoBehaviour
 
     private void OnEnable()
     {
+        hasPlayedIntroVid = false;
         SetLocalizationVids();
-        videoPlayer.clip = videoClips[0];
-        videoPlayer.Play();
-        videoPlayer.loopPointReached += UpdatePage;
-        if (!AudioManager.Instance.isMusicOn)
+        if (!hasPlayedIntroVid)
         {
-            videoPlayer.SetDirectAudioMute(0, true);
+            videoPlayer.clip = videoClips[0];
+            videoPlayer.Play();
+            videoPlayer.loopPointReached += UpdatePage;
+            if (!AudioManager.Instance.isMusicOn)
+            {
+                videoPlayer.SetDirectAudioMute(0, true);
+            }
+            hasPlayedIntroVid = true;
         }
+        else
+        {
+            UpdatePage(videoPlayer);
+        }
+        
     }
-    
+
+    private void OnDisable()
+    {
+        index = 0;
+        ClosePanels();
+    }
+
     public void SetLocalizationVids() //NEEDS TO BE UPDATED IF MORE LANGUAGES ARE ADDED
     {
         videoClips.Clear();

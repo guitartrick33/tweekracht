@@ -140,12 +140,11 @@ public class CardController : MonoBehaviour
         if (!hasChosenASide)
         {
             yield return new WaitForSeconds(1.3f);
-            Debug.Log("Ayo what is this");
         }
         else
         {
             yield return new WaitForSeconds(0f);
-            Debug.Log("Gabriel steals!!!");
+            hasChosenASide = false;
         }
         titlePickSide.SetActive(false);
         
@@ -197,7 +196,7 @@ public class CardController : MonoBehaviour
     IEnumerator WaitBeforePlayingVideo(CardDesc cardDesc, GameObject card)
     {
         //Serves as mediator between playing the video and the pop up animations
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         cardDesc.videoPlayer.Play();
         vp = cardDesc.videoPlayer;
         yield return new WaitForSeconds(0.5f); //Added this because on the APK emulator, the textures didn't load as intended so that refrains from showing them as empty

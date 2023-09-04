@@ -11,23 +11,14 @@ using TMPro;
 [RequireComponent(typeof(ScrollRect))]
 public class Carousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
 
-    [Tooltip("Set starting page index - starting from 0")]
     public int startingPage = 0;
-    [Tooltip("Threshold time for fast swipe in seconds")]
     public float fastSwipeThresholdTime = 0.3f;
-    [Tooltip("Threshold time for fast swipe in (unscaled) pixels")]
     public int fastSwipeThresholdDistance = 100;
-    [Tooltip("How fast will page lerp to target position")]
     public float decelerationRate = 10f;
-    [Tooltip("Button to go to the previous page (optional)")]
     public GameObject prevButton;
-    [Tooltip("Button to go to the next page (optional)")]
     public GameObject nextButton;
-    [Tooltip("Sprite for unselected page (optional)")]
     public Sprite unselectedPage;
-    [Tooltip("Sprite for selected page (optional)")]
     public Sprite selectedPage;
-    [Tooltip("Container with page images (optional)")]
     public Transform pageSelectionIcons;
 
 

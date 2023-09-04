@@ -1651,6 +1651,7 @@ MonoBehaviour:
   resultCard: {fileID: 827747430146695669}
   resultSoftSideTitle: 
   resultHardSideTitle: 
+  hasChosenASide: 0
   texture: {fileID: 8400000, guid: 6436c1a69024dbd439d57b7bd7534c4c, type: 2}
   interactive: 0
   vp: {fileID: 0}
@@ -19206,6 +19207,7 @@ GameObject:
   - component: {fileID: 9217362709560473765}
   - component: {fileID: 3160843931294375299}
   - component: {fileID: 4868221653400604814}
+  - component: {fileID: 2631969623239026487}
   m_Layer: 5
   m_Name: SideText
   m_TagString: Untagged
@@ -19330,6 +19332,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2631969623239026487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090892366443250210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Card.SoftSide
+  isCapital: 1
 --- !u!1 &9096495869157563218
 GameObject:
   m_ObjectHideFlags: 0

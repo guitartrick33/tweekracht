@@ -128,4 +128,10 @@ public class SideMiniGameController : MonoBehaviour
         Reset();
         ViewManager.Instance.SwitchView(ViewType.MainMenu);
     }
+
+    private void OnEnable()
+    {
+        index = 0;
+        SpawnImage();
+    }
 }
